@@ -5,7 +5,7 @@ import Container from '../Container/Container';
 import { FaHome, FaPhoneAlt, FaUsers } from 'react-icons/fa';
 import { RiServiceFill } from 'react-icons/ri';
 import Button from '../Button/Button';
-import logoImg from '../../../assets/logo.jpg'
+import logoImg from '../../../assets/logo.png'
 
 const Navbar = () => {
     const links = (
