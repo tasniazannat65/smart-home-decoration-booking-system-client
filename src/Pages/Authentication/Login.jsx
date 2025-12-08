@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import GoogleLogin from './GoogleLogin';
 
 const Login = () => {
      const {register, handleSubmit, formState: {errors}} = useForm();
@@ -28,8 +29,8 @@ const Login = () => {
          <div className='flex flex-col max-w-md p-6 rounded-md md:p-8 lg:p-10 bg-gray-100 text-gray-900'>
 
             <div className='mb-8 text-center'>
-                <h2 className='font-bold my-3 text-4xl'>Create Your Account</h2>
-            <p className='text-sm text-gray-400'>Get started with Laxius Decor</p>
+                <h2 className='font-bold my-3 text-4xl'>Welcome Back</h2>
+            <p className='text-sm text-gray-400'>Login to continue your journey</p>
             </div>
             <form onSubmit={handleSubmit(handleLogin)} className='space-y-4' >
                  <fieldset className="fieldset">
@@ -70,7 +71,13 @@ const Login = () => {
           }
           <button className="btn bg-gradient-to-r from-primary to-secondary text-white mt-4 font-medium">Register</button>
           <p className='text-[#71717A] text-[15px]'>Don’t have any account? <Link to='/sign-up' className='text-secondary hover:text-primary hover:underline'>Sign Up</Link></p>
-          <p className='text-gray-500 text-center'>Or</p>
+          <div className='flex items-center gap-1'>
+            <div className='border-t border-gray-400 w-full'></div>
+            <p className='text-gray-500 text-center'>Or</p>
+
+            <div className='border-t border-gray-400 w-full'></div>
+          </div>
+          <GoogleLogin/>
 
      
         </fieldset>

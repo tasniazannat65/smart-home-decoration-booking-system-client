@@ -7,6 +7,7 @@ import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
+import GoogleLogin from './GoogleLogin';
 
 const SignUp = () => {
         const {register, handleSubmit, formState: {errors}} = useForm();
@@ -122,7 +123,13 @@ const SignUp = () => {
           }
           <button className="btn bg-gradient-to-r from-primary to-secondary text-white mt-4 font-medium">Register</button>
           <p className='text-[#71717A] text-[15px]'>Already have an account? <Link to='/login' className='text-secondary hover:text-primary hover:underline'>Login</Link></p>
-          <p className='text-gray-500 text-center'>Or</p>
+          <div className='flex items-center gap-1'>
+            <div className='border-t border-gray-400 w-full'></div>
+            <p className='text-gray-500 text-center'>Or</p>
+
+            <div className='border-t border-gray-400 w-full'></div>
+          </div>
+          <GoogleLogin/>
 
      
         </fieldset>
