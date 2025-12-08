@@ -6,11 +6,14 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import PageError from "../Components/Shared/ErrorHandle/PageError";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         Component: MainLayout,
+        errorElement: <PageError/>,
         children: [
             {
                 index: true,
@@ -40,5 +43,9 @@ export const router = createBrowserRouter([
         Component: SignUp
         
     },
+    {
+        path: '/dashboard',
+        Component: DashboardLayout
+    }
     
 ])

@@ -14,23 +14,23 @@ const Footer = () => {
                     <div className='flex flex-col md:flex-row items-start md:items-center gap-1'>
                         <img src={logoImg} alt="Brand Logo" className='w-20 h-20' />
                         <div className='flex flex-col'>
-                            <h1 className='text-2xl font-bold bg-gradient-to-r from-[#4F46E5] to-[#A78BFA] bg-clip-text text-transparent'>Laxius Decor</h1>
+                            <h1 className='text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Laxius Decor</h1>
                             <p className='text-sm mt-1 text-neutral'>Design Beyond Ordinary</p>
 
                         </div>
 
                     </div>
                     <div className='flex gap-4 mt-4 md:mt-0'>
-                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4F46E5] to-[#A78BFA] text-white hover:scale-110 transition-transform'>
+                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:scale-110 transition-transform'>
                             <FaFacebookF/>
                         </a>
-                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4F46E5] to-[#A78BFA] text-white hover:scale-110 transition-transform'>
+                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:scale-110 transition-transform'>
                             <FaXTwitter />
                         </a>
-                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4F46E5] to-[#A78BFA] text-white hover:scale-110 transition-transform'>
+                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:scale-110 transition-transform'>
                             <FaInstagram/>
                         </a>
-                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-[#4F46E5] to-[#A78BFA] text-white hover:scale-110 transition-transform'>
+                        <a href="#" className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-secondary text-white hover:scale-110 transition-transform'>
                          <FaLinkedinIn />
                         </a>
 

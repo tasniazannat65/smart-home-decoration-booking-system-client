@@ -13,7 +13,6 @@ const GoogleLogin = () => {
     const handleGoogleSignIn = ()=>{
         googleSignIn()
         .then(result=>{
-            // console.log(result.user)
                const userInfo = {
                 email: result.user.email,
                 displayName: result.user.displayName,
@@ -22,13 +21,13 @@ const GoogleLogin = () => {
                 }
                   axiosSecure.post('/users', userInfo)
                 .then(res=>{
-                    // console.log('user data has been stored', res.data)
 
                     if(res.data.insertedId){
-                        toast.success('user created in the database')
-                         navigate(location.state || '/');
+                        toast.success('Logged in user with Google successfully!')
 
                     }
+                                             navigate(location.state || '/');
+
                 })
 
 
