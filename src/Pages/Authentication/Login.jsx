@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
      const {register, handleSubmit, formState: {errors}} = useForm();
             const [show, setShow] = useState(false);
+            const {signInUser} = useAuth();
+            const navigate = useNavigate();
+            const location = useLocation();
+            const handleLogin = (data)=>{
+            signInUser(data.email, data.password)
+            .then(result=>{
+                console.log(result.user)
+                toast.success('Logged in successfully!')
+                navigate(location.state || '/')
+            })
+            .catch(error=>{
+                toast.error(error.message)
+            })
+        }
+
     return (
        <div className='flex justify-center items-center min-h-screen bg-white'>
          <div className='flex flex-col max-w-md p-6 rounded-md md:p-8 lg:p-10 bg-gray-100 text-gray-900'>
@@ -14,7 +31,7 @@ const Login = () => {
                 <h2 className='font-bold my-3 text-4xl'>Create Your Account</h2>
             <p className='text-sm text-gray-400'>Get started with Laxius Decor</p>
             </div>
-            <form onSubmit={handleSubmit} className='space-y-4' >
+            <form onSubmit={handleSubmit(handleLogin)} className='space-y-4' >
                  <fieldset className="fieldset">
                        
                        
