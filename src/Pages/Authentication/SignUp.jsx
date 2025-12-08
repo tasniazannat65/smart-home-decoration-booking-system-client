@@ -1,0 +1,90 @@
+import React from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
+
+const SignUp = () => {
+        const {register, handleSubmit, formState: {errors}} = useForm();
+        const [show, setShow] = useState(false);
+        const {createUser, updateUserProfile} = useAuth();
+        const handleRegistration = (data)=>{
+          const profileImg = data.photo[0];
+          createUser(data.email, data.password)
+          .then(result=>{
+            console.log(result.user)
+            const formData = new FormData();
+            formData.append('image', profileImg);
+            const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host}`
+          })
+        }
+
+    return (
+       <div className='flex justify-center items-center min-h-screen bg-white'>
+         <div className='flex flex-col max-w-md p-6 rounded-md md:p-8 lg:p-10 bg-gray-100 text-gray-900'>
+
+            <div className='mb-8 text-center'>
+                <h2 className='font-bold my-3 text-4xl'>Create Your Account</h2>
+            <p className='text-sm text-gray-400'>Get started with Laxius Decor</p>
+            </div>
+            <form onSubmit={handleSubmit} className='space-y-4' >
+                 <fieldset className="fieldset">
+                       
+                       
+        <input type="file" {...register('photo', {required: true})} className="file-input w-full" placeholder="Photo" />
+         {
+            errors.photo?.type==='required' && <p className='text-red-600'>Photo is required.</p>
+          }
+
+
+          <label className="label text-[#0F172A] font-medium">Name</label>
+        <input type="text" {...register('name', {required: true})} className="input w-full" placeholder="Name" />
+         {
+            errors.name?.type==='required' && <p className='text-red-600'>Name is required.</p>
+          }
+
+
+          <label className="label text-[#0F172A] font-medium">Email</label>
+          <input type="email" {...register('email', {required: true})} className="input w-full" placeholder="Email" />
+
+          {
+            errors.email?.type==='required' && <p className='text-red-600'>Email is required.</p>
+          }
+
+
+        <div className='relative'>
+              <label className="label text-[#0F172A] font-medium">Password</label>
+          <input type={show ? 'text' : 'password'}
+          
+          {...register('password', {required: true, minLength: 6,
+          pattern:  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).+$/
+
+
+          })} className="input w-full" placeholder="*******" />
+          <span className='absolute bottom-3 right-3 z-50' onClick={()=>setShow(!show)}>{show ? <FaEye size={16}/>  : <FaEyeSlash size={16}/>}</span>
+        </div>
+
+          {
+            errors.password?.type==='required' && <p className='text-red-600'>Password is required.</p>
+          }
+          {
+            errors.password?.type==='minLength' && <p className='text-red-600'>Password must be 6 characters or longer.</p>
+          }
+          {
+            errors.password?.type==='pattern' && <p className='text-red-600'>Password must have one UpperCase, one LowerCase, one Number and one special character. </p>
+          }
+          <button className="btn bg-gradient-to-r from-primary to-secondary text-white mt-4 font-medium">Register</button>
+          <p className='text-[#71717A] text-[15px]'>Already have an account? <Link to='/login' className='text-secondary hover:text-primary hover:underline'>Login</Link></p>
+          <p className='text-gray-500 text-center'>Or</p>
+
+     
+        </fieldset>
+            </form>
+            
+        </div>
+       </div>
+    );
+};
+
+export default SignUp;
