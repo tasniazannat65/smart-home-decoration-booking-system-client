@@ -2,14 +2,23 @@ import React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
+import axios from 'axios';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
         const {register, handleSubmit, formState: {errors}} = useForm();
         const [show, setShow] = useState(false);
         const {createUser, updateUserProfile} = useAuth();
+        const location = useLocation();
+        const navigate = useNavigate();
+        const axiosSecure = useAxiosSecure();
+
         const handleRegistration = (data)=>{
+          console.log(data)
+
           const profileImg = data.photo[0];
           createUser(data.email, data.password)
           .then(result=>{
@@ -17,6 +26,40 @@ const SignUp = () => {
             const formData = new FormData();
             formData.append('image', profileImg);
             const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host}`
+            axios.post(image_API_URL, formData)
+            .then(res=>{
+              const photoURL = res.data.data.url;
+              const userInfo = {
+                email: data.email,
+                  displayName: data.name,
+              photoURL: photoURL
+
+              }
+              axiosSecure.post('/users', userInfo)
+              .then(res=> {
+                if(res.data.insertedId){
+                  toast.success('User created successfully!')
+                }
+              })
+              const userProfile = {
+                displayName: data.name,
+                photoURL: photoURL
+                
+              }
+              updateUserProfile(userProfile)
+              .then(()=>{
+                console.log('user profile updated')
+                navigate(location.state || '/')
+              })
+              .catch(error=>{
+                toast.error(error.message)
+              })
+
+            
+            })
+          })
+          .catch(error=>{
+            toast.error(error.message)
           })
         }
 
@@ -28,25 +71,28 @@ const SignUp = () => {
                 <h2 className='font-bold my-3 text-4xl'>Create Your Account</h2>
             <p className='text-sm text-gray-400'>Get started with Laxius Decor</p>
             </div>
-            <form onSubmit={handleSubmit} className='space-y-4' >
+            <form onSubmit={handleSubmit(handleRegistration)} className='space-y-4' >
                  <fieldset className="fieldset">
+               
+
+
+          <label className="label text-[#0F172A] font-medium">Name</label>
+        <input type="text" {...register('name', {required: 'Name is required.', minLength: {value: 6, message: 'Name must be at least 6 characters.'}})} className="input w-full" placeholder="Enter your name" />
+         {
+            errors.name && <p className='text-red-600 mt-1'>{errors.name.message}</p>
+          }
+                       <label className="label text-[#0F172A] font-medium">Photo</label>
+
                        
                        
-        <input type="file" {...register('photo', {required: true})} className="file-input w-full" placeholder="Photo" />
+        <input type="file" {...register('photo', {required: true})} className="file-input w-full" placeholder="Enter your photo" />
          {
             errors.photo?.type==='required' && <p className='text-red-600'>Photo is required.</p>
           }
 
 
-          <label className="label text-[#0F172A] font-medium">Name</label>
-        <input type="text" {...register('name', {required: true})} className="input w-full" placeholder="Name" />
-         {
-            errors.name?.type==='required' && <p className='text-red-600'>Name is required.</p>
-          }
-
-
           <label className="label text-[#0F172A] font-medium">Email</label>
-          <input type="email" {...register('email', {required: true})} className="input w-full" placeholder="Email" />
+          <input type="email" {...register('email', {required: true})} className="input w-full" placeholder="example@gmail.com" />
 
           {
             errors.email?.type==='required' && <p className='text-red-600'>Email is required.</p>
