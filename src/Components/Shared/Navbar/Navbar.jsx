@@ -15,8 +15,9 @@ const Navbar = () => {
  
     return (
          
-     <Container className="bg-gray-200 shadow-sm">
-            <div className="navbar ">
+<div className='bg-base-200 shadow-sm'>
+       <Container>
+            <div className="navbar">
   <div className="flex-1">
   <div className='flex items-center gap-1'>
            <img src={logoImg} alt="Brand Logo" className='w-16 h-16' />
@@ -111,6 +112,7 @@ const Navbar = () => {
   </div>
 </div>
 </Container>
+</div>
     
     );
 };

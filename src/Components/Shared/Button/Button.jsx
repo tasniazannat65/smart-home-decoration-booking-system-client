@@ -19,9 +19,11 @@ const Button = ({ label, onClick, disabled, outline, small }) => {
           ${outline ? 'border-[#5BB4EA]' : 'border-[#4d5bbf]'}
           ${outline ? 'text-[#5BB4EA]' : 'text-white'}
           ${small ? 'text-sm' : 'text-md'}
-          ${small ? 'py-1' : 'py-3'}
+          ${small ? 'py-1' : 'py-2'}
           ${small ? 'font-light' : 'font-semibold'}
           ${small ? 'border' : 'border-2'}
+          ${outline ? 'hover:bg-[#5BB4EA] hover:text-white' : 'hover:bg-[#5BB4EA] hover:border-[#5BB4EA]'}
+        
          
         `}
     >
