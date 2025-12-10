@@ -8,6 +8,7 @@ import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import PageError from "../Components/Shared/ErrorHandle/PageError";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -45,7 +46,9 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        Component: DashboardLayout
+        element: <PrivateRoute>
+            <DashboardLayout/>
+        </PrivateRoute>
     }
     
 ])
