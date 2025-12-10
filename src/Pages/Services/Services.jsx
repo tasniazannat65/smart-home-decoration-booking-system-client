@@ -7,6 +7,8 @@ import Heading from '../../Components/Shared/Heading/Heading';
 import Container from '../../Components/Shared/Container/Container';
 import noDataFound from '../../assets/no_data_found.json'
 import Lottie from 'lottie-react';
+import { FaArrowLeft } from 'react-icons/fa6';
+import { Link } from 'react-router';
 
 
 const Services = () => {
@@ -49,8 +51,9 @@ const Services = () => {
         return <Loading/>
     }
     return (
-        <div className=''>
+        <div>
             <Container>
+                <Link to="/" className='text-primary flex items-center mt-5 hover:text-secondary'><FaArrowLeft/>Back to home</Link>
             <div className='max-w-4xl mx-auto py-4 md:py-6 lg:py-8'>
                 <Heading title="Our Decoration Services" subtitle="  Explore our premium decoration services designed for weddings,
           birthdays, home events, offices and corporate programs." center/>
