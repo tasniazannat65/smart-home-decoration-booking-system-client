@@ -9,6 +9,7 @@ import SignUp from "../Pages/Authentication/SignUp";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import PageError from "../Components/Shared/ErrorHandle/PageError";
 import PrivateRoute from "./PrivateRoute";
+import CoverageArea from "../Pages/CoverageArea/CoverageArea";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
             {
                 path: '/contact',
                 Component: Contact
+            },
+            {
+                path: '/coverage',
+                Component: CoverageArea,
+                loader: ()=> fetch('/services_area.json').then(res=> res.json())
             }
         ]
     },

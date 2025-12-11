@@ -1,0 +1,132 @@
+[
+  {
+    "service_name": "Elegant Wedding Stage Decoration",
+    "locations": [
+      { "city": "Dhaka", "lat": 23.8103, "lng": 90.4125 },
+      { "city": "Gulshan, Dhaka", "lat": 23.7925, "lng": 90.4078 },
+      { "city": "Banani, Dhaka", "lat": 23.7895, "lng": 90.4070 },
+      { "city": "Dhanmondi, Dhaka", "lat": 23.7465, "lng": 90.3760 },
+      { "city": "Mirpur, Dhaka", "lat": 23.8102, "lng": 90.3657 }
+    ]
+  },
+  {
+    "service_name": "Home Party Decoration",
+    "locations": [
+      { "city": "Chittagong", "lat": 22.3569, "lng": 91.7832 },
+      { "city": "Pahartali, Chittagong", "lat": 22.3370, "lng": 91.8326 },
+      { "city": "Halishahar, Chittagong", "lat": 22.3915, "lng": 91.7984 },
+      { "city": "Kotwali, Chittagong", "lat": 22.3440, "lng": 91.8320 },
+      { "city": "Agrabad, Chittagong", "lat": 22.3310, "lng": 91.8212 }
+    ]
+  },
+  {
+    "service_name": "Corporate Event Setup",
+    "locations": [
+      { "city": "Sylhet", "lat": 24.8949, "lng": 91.8687 },
+      { "city": "Moulvibazar, Sylhet", "lat": 24.4860, "lng": 91.7775 },
+      { "city": "Beanibazar, Sylhet", "lat": 24.9010, "lng": 91.9650 },
+      { "city": "Jaintiapur, Sylhet", "lat": 25.1234, "lng": 91.8833 },
+      { "city": "Golapganj, Sylhet", "lat": 24.8785, "lng": 91.9005 }
+    ]
+  },
+  {
+    "service_name": "Seminar & Conference Decoration",
+    "locations": [
+      { "city": "Rajshahi", "lat": 24.3745, "lng": 88.6042 },
+      { "city": "Bogura", "lat": 24.8463, "lng": 89.3710 },
+      { "city": "Pabna", "lat": 24.0066, "lng": 89.2333 },
+      { "city": "Natore", "lat": 24.4166, "lng": 89.0301 },
+      { "city": "Sirajganj", "lat": 24.4553, "lng": 89.7003 }
+    ]
+  },
+  {
+    "service_name": "Birthday Party Decoration",
+    "locations": [
+      { "city": "Khulna", "lat": 22.8456, "lng": 89.5403 },
+      { "city": "Jessore", "lat": 23.1704, "lng": 89.2073 },
+      { "city": "Satkhira", "lat": 22.7161, "lng": 89.0725 },
+      { "city": "Bagerhat", "lat": 22.6500, "lng": 89.7910 },
+      { "city": "Narail", "lat": 23.1677, "lng": 89.5218 }
+    ]
+  },
+  {
+    "service_name": "Floral Decoration",
+    "locations": [
+      { "city": "Barishal", "lat": 22.7010, "lng": 90.3535 },
+      { "city": "Patuakhali", "lat": 22.3597, "lng": 90.3297 },
+      { "city": "Bhola", "lat": 22.6856, "lng": 90.6233 },
+      { "city": "Jhalokathi", "lat": 22.4685, "lng": 90.2012 },
+      { "city": "Barguna", "lat": 22.1800, "lng": 90.0333 }
+    ]
+  },
+  {
+    "service_name": "Lighting & Stage Setup",
+    "locations": [
+      { "city": "Comilla", "lat": 23.4547, "lng": 91.1809 },
+      { "city": "Chandpur", "lat": 23.2156, "lng": 91.6625 },
+      { "city": "Feni", "lat": 23.0143, "lng": 91.3917 },
+      { "city": "Noakhali", "lat": 22.8162, "lng": 91.0994 },
+      { "city": "Lakshmipur", "lat": 22.9219, "lng": 90.8182 }
+    ]
+  },
+  {
+    "service_name": "Corporate Theme Decoration",
+    "locations": [
+      { "city": "Tangail", "lat": 24.2500, "lng": 89.9167 },
+      { "city": "Mymensingh", "lat": 24.7471, "lng": 90.4203 },
+      { "city": "Netrokona", "lat": 24.8800, "lng": 90.7260 },
+      { "city": "Jamalpur", "lat": 24.9198, "lng": 89.9374 },
+      { "city": "Sherpur", "lat": 25.0290, "lng": 90.0187 }
+    ]
+  },
+  {
+    "service_name": "Home Interior Decoration",
+    "locations": [
+      { "city": "Gazipur", "lat": 23.9990, "lng": 90.4200 },
+      { "city": "Tangail", "lat": 24.2500, "lng": 89.9167 },
+      { "city": "Narsingdi", "lat": 23.9275, "lng": 90.7173 },
+      { "city": "Kishoreganj", "lat": 24.4330, "lng": 90.7857 },
+      { "city": "Manikganj", "lat": 23.8600, "lng": 90.0120 }
+    ]
+  },
+  {
+    "service_name": "Corporate Event Theme",
+    "locations": [
+      { "city": "Cox's Bazar", "lat": 21.4272, "lng": 92.0058 },
+      { "city": "Teknaf", "lat": 20.8782, "lng": 92.2978 },
+      { "city": "Ukhia", "lat": 22.3342, "lng": 92.2215 },
+      { "city": "Ramu", "lat": 21.8967, "lng": 92.2917 },
+      { "city": "Chakaria", "lat": 22.2034, "lng": 92.1050 }
+    ]
+  },
+  {
+    "service_name": "LED Backdrop Decoration",
+    "locations": [
+      { "city": "Feni", "lat": 23.0143, "lng": 91.3917 },
+      { "city": "Chandpur", "lat": 23.2156, "lng": 91.6625 },
+      { "city": "Comilla", "lat": 23.4547, "lng": 91.1809 },
+      { "city": "Noakhali", "lat": 22.8162, "lng": 91.0994 },
+      { "city": "Lakshmipur", "lat": 22.9219, "lng": 90.8182 }
+    ]
+  },
+  {
+    "service_name": "Flower Arch & Entrance Decoration",
+    "locations": [
+      { "city": "Barishal", "lat": 22.7010, "lng": 90.3535 },
+      { "city": "Patuakhali", "lat": 22.3597, "lng": 90.3297 },
+      { "city": "Bhola", "lat": 22.6856, "lng": 90.6233 },
+      { "city": "Jhalokathi", "lat": 22.4685, "lng": 90.2012 },
+      { "city": "Barguna", "lat": 22.1800, "lng": 90.0333 }
+    ]
+  },
+  {
+    "service_name": "Floral Wall & Centerpiece",
+    "locations": [
+      { "city": "Khulna", "lat": 22.8456, "lng": 89.5403 },
+      { "city": "Jessore", "lat": 23.1704, "lng": 89.2073 },
+      { "city": "Satkhira", "lat": 22.7161, "lng": 89.0725 },
+      { "city": "Bagerhat", "lat": 22.6500, "lng": 89.7910 },
+      { "city": "Narail", "lat": 23.1677, "lng": 89.5218 }
+    ]
+  }
+]

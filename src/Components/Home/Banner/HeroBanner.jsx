@@ -14,6 +14,7 @@ const HeroBanner = () => {
     <MyLink onClick={()=>setMenuOpen(false)} to='/services'>Services</MyLink>
     <MyLink onClick={()=>setMenuOpen(false)} to='/about'>About Us</MyLink>
     <MyLink onClick={()=>setMenuOpen(false)} to='/contact'>Contact Us</MyLink>
+    <MyLink onClick={()=>setMenuOpen(false)} to='/coverage'>Coverage Area</MyLink>
     
     </>
     return (
@@ -27,7 +28,7 @@ const HeroBanner = () => {
                 {links}
 
             </div>
-            <div className='absolute top-4 right-6 z-30 md:hidden lg:hidden'>
+            <div className='absolute top-4 right-6 z-50 md:hidden lg:hidden'>
                 <button onClick={()=>setMenuOpen(!menuOpen)} className='text-white text-3xl'>
                     {menuOpen ? <HiX/> : <HiMenu/>}
                 </button>
