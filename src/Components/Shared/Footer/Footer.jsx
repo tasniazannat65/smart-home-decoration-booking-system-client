@@ -8,7 +8,7 @@ import { IoIosMail } from 'react-icons/io';
 
 const Footer = () => {
     return (
-        <footer className='bg-gray-300 mt-10 pt-10 pb-10'>
+        <footer className='bg-gray-300 mt-10 pt-10 pb-6'>
             <Container>
                 <div className='flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-400 pb-6'>
                     <div className='flex flex-col md:flex-row items-start md:items-center gap-1'>

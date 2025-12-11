@@ -10,6 +10,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import PageError from "../Components/Shared/ErrorHandle/PageError";
 import PrivateRoute from "./PrivateRoute";
 import CoverageArea from "../Pages/CoverageArea/CoverageArea";
+import Loading from "../Components/Shared/Loading/Loading";
 
 export const router = createBrowserRouter([
     {
@@ -36,7 +37,8 @@ export const router = createBrowserRouter([
             {
                 path: '/coverage',
                 Component: CoverageArea,
-                loader: ()=> fetch('/services_area.json').then(res=> res.json())
+                loader: ()=> fetch('/services_area.json').then(res=> res.json()),
+                hydrateFallbackElement: <Loading/>
             }
         ]
     },
