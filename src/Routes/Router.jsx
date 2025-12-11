@@ -11,6 +11,7 @@ import PageError from "../Components/Shared/ErrorHandle/PageError";
 import PrivateRoute from "./PrivateRoute";
 import CoverageArea from "../Pages/CoverageArea/CoverageArea";
 import Loading from "../Components/Shared/Loading/Loading";
+import ServiceDetails from "../Pages/Services/ServiceDetails";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 Component: Services
+            },
+            {
+                path: '/services/:id',
+                Component: ServiceDetails
             },
             {
                 path: '/about',
