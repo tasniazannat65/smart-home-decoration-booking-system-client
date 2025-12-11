@@ -12,6 +12,15 @@ import PrivateRoute from "./PrivateRoute";
 import CoverageArea from "../Pages/CoverageArea/CoverageArea";
 import Loading from "../Components/Shared/Loading/Loading";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
+import Profile from "../Pages/DashboardPage/Profile/Profile";
+import MyBooking from "../Pages/DashboardPage/Booking/MyBooking";
+import PaymentHistory from "../Pages/DashboardPage/Payment/PaymentHistory";
+import DecoratorRoute from "./DecoratorRoute";
+import AssignedProject from "../Pages/DashboardPage/Decorator/AssignedProject/AssignedProject";
+import ProjectStatusUpdate from "../Pages/DashboardPage/Decorator/ProjectStatus/ProjectStatusUpdate";
+import TodaySchedule from "../Pages/DashboardPage/Decorator/Schedule/TodaySchedule";
+import EarningSummary from "../Pages/DashboardPage/Decorator/EarningSummary/EarningSummary";
+import DecoratorPaymentHistory from "../Pages/DashboardPage/Decorator/PaymentHistory/DecoratorPaymentHistory";
 
 export const router = createBrowserRouter([
     {
@@ -61,7 +70,58 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute>
             <DashboardLayout/>
-        </PrivateRoute>
+        </PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard/profile',
+                Component: Profile
+            },
+            {
+                path: '/dashboard/my-booking',
+                Component: MyBooking
+            },
+            {
+                path: '/dashboard/payment-history',
+                Component: PaymentHistory
+            },
+            {
+                path: '/dashboard/assigned-projects',
+                element: <DecoratorRoute>
+                    <AssignedProject/>
+                </DecoratorRoute>
+
+            },
+            {
+                path: '/dashboard/project-status/:id',
+                element: <DecoratorRoute>
+                    <ProjectStatusUpdate/>
+                </DecoratorRoute>
+
+            },
+            {
+                path: '/dashboard/today-schedule',
+                element: <DecoratorRoute>
+                    <TodaySchedule/>
+                </DecoratorRoute>
+
+            },
+            {
+                path: '/dashboard/earnings',
+                element: <DecoratorRoute>
+                    <EarningSummary/>
+                </DecoratorRoute>
+
+            },
+            {
+                path: '/dashboard/earnings-history',
+                element: <DecoratorRoute>
+                    <DecoratorPaymentHistory/>
+                </DecoratorRoute>
+
+            },
+
+
+        ]
     }
     
 ])
