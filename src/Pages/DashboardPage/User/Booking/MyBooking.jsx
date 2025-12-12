@@ -13,6 +13,7 @@ const MyBooking = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [editBooking, setEditBooking] = useState(null);
+  const [sorted, setSorted] = useState("");
   const {
     data: bookings = [],
     isLoading,
@@ -24,6 +25,30 @@ const MyBooking = () => {
       return res.data;
     },
   });
+
+  const priority = {
+    pending: 1,
+    approved: 2,
+    completed: 3
+  }
+
+  const sortedBookings = [...bookings].sort((a, b)=> {
+    if(sorted === 'newDate'){
+      return new Date(b.bookingDate) - new Date(a.bookingDate);
+
+    }
+    if(sorted === 'oldDate'){
+      return new Date(a.bookingDate) - new Date(b.bookingDate);
+
+    }
+    if(sorted === 'statusAsc'){
+      return priority[a.status] - priority[b.status]
+    }
+    if(sorted === 'statusDesc'){
+      return priority[b.status] - priority[a.status]
+    }
+    return 0;
+  })
 
   const handlePayment = async (booking) => {
     const paymentInfo = {
@@ -72,6 +97,18 @@ const MyBooking = () => {
   return (
     <div>
       <Heading title="My Bookings" center />
+      <div className="flex md:justify-end lg:justify-end justify-center my-4">
+    <div className="relative">
+          <select  className="w-56 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-lg outline-none cursor-pointer hover:brightness-110 transition" value={sorted} onChange={(e)=> setSorted(e.target.value)}>
+  <option className="text-accent" value="" >Sort By</option>
+  <option className="text-accent" value="newDate">Date: Newest First</option>
+  <option className="text-accent" value="oldDate">Date: Oldest First</option>
+  <option className="text-accent" value="statusAsc">Status A-&gt; Z</option>
+  <option className="text-accent" value="statusDesc">Status Z-&gt;A</option>
+</select>
+    </div>
+
+      </div>
 
       <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">
         <table className="table">
@@ -90,7 +127,7 @@ const MyBooking = () => {
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, index) => (
+            {sortedBookings.map((booking, index) => (
               <tr key={booking._id}>
                 <th className="p-2">{index + 1}</th>
                 <td className="p-2 ">{booking.serviceName}</td>
