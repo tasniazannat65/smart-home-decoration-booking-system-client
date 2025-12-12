@@ -17,7 +17,9 @@ const handleBookingDecoration = async(data)=>{
         userName: user.displayName,
         userEmail: user.email,
         price: service.cost,
+       
         bookingDate: new Date(data.date),
+        createdAt: new Date(),
         location: data.location,
         status: 'pending'
     }

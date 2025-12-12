@@ -30,7 +30,7 @@ const PaymentSuccess = () => {
         }, 500);
         const timer2 = setTimeout(()=>{
             setShowConfetti(false);
-        }, 4000);
+        }, 6000);
         return ()=> {
             clearTimeout(timer);
             clearTimeout(timer2);

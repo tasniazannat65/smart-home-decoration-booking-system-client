@@ -12,7 +12,7 @@ import Heading from '../../../Components/Shared/Heading/Heading';
 const MyBooking = () => {
      const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
-const {data: bookings = [], isLoading} = useQuery({
+const {data: bookings = [], isLoading, refetch} = useQuery({
     queryKey: ['myBooking', user?.email],
     queryFn: async()=>{
         const res = await axiosSecure.get(`/bookings?email=${user.email}`);
@@ -37,35 +37,35 @@ const handlePayment = async(booking)=>{
 
 }
 
-// const handleParcelDelete = (id)=>{
-//     Swal.fire({
-//   title: "Are you sure?",
-//   text: "You won't be able to revert this!",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#a8df06",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Yes, delete it!"
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//     axiosSecure.delete(`/parcels/${id}`)
-//     .then(res=>{
-//         console.log(res.data)
-//         if(res.data.deletedCount){
-//             refetch();
-//              Swal.fire({
-//       title: "Deleted!",
-//       text: "Your parcel request has been deleted.",
-//       icon: "success"
-//     });
+const handleBookingDelete = (id)=>{
+    Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#4F46E5",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    axiosSecure.delete(`/bookings/${id}`)
+    .then(res=>{
+        console.log(res.data)
+        if(res.data.deletedCount){
+            refetch();
+             Swal.fire({
+      title: "Deleted!",
+      text: "Your booking has been deleted.",
+      icon: "success"
+    });
 
-//         }
-//     })
+        }
+    })
    
-//   }
-// });
+  }
+});
 
-// }
+}
 
 
 
@@ -76,12 +76,13 @@ if(isLoading){
         <div>
             <Heading title="My Bookings" center/>
 
-            <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mt-5">
+            <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">
   <table className="table">
     {/* head */}
-    <thead className='bg-base-200'>
+    <thead className='bg-base-200 '>
       <tr>
         <th></th>
+        
         <th className='text-primary font-bold text-lg'>Service</th>
         <th className='text-primary font-bold text-lg'>Price</th>
         <th className='text-primary font-bold text-lg'>Date</th>
@@ -94,8 +95,8 @@ if(isLoading){
       {
         bookings.map((booking, index)=>  <tr key={booking._id}>
         <th className='p-2'>{index + 1}</th>
-        <td className='p-2'>{booking.serviceName}</td>
-        <td className='p-2'>{booking.price}</td>
+        <td className='p-2 '>{booking.serviceName}</td>
+        <td className='p-2 '>{booking.price}</td>
        <td className='p-2'>{new Date(booking.bookingDate).toLocaleDateString()}</td>
        <td className='p-2'>
         {
@@ -110,7 +111,7 @@ if(isLoading){
                 <FaEdit />
                 
                 Edit</button>
-            <button  className='btn bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md'>
+            <button onClick={()=> handleBookingDelete(booking._id)}  className='btn bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md'>
                 <FaTrashAlt />
 
 
