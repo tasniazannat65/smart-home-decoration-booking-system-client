@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -7,11 +7,13 @@ import { Link } from 'react-router';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Loading from '../../../Components/Shared/Loading/Loading';
 import Heading from '../../../Components/Shared/Heading/Heading';
+import UpdateBookingModal from '../../../Components/Modal/UpdateBookingModal';
 
 
 const MyBooking = () => {
      const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
+    const [editBooking, setEditBooking] = useState(null);
 const {data: bookings = [], isLoading, refetch} = useQuery({
     queryKey: ['myBooking', user?.email],
     queryFn: async()=>{
@@ -81,9 +83,10 @@ if(isLoading){
     {/* head */}
     <thead className='bg-base-200 '>
       <tr>
-        <th></th>
+        <th className='text-primary font-bold text-lg'>SL.</th>
         
         <th className='text-primary font-bold text-lg'>Service</th>
+        <th className='text-primary font-bold text-lg'>Location</th>
         <th className='text-primary font-bold text-lg'>Price</th>
         <th className='text-primary font-bold text-lg'>Date</th>
         <th className='text-primary font-bold text-lg'>Payment</th>
@@ -96,6 +99,7 @@ if(isLoading){
         bookings.map((booking, index)=>  <tr key={booking._id}>
         <th className='p-2'>{index + 1}</th>
         <td className='p-2 '>{booking.serviceName}</td>
+        <td className='p-2 '>{booking.location}</td>
         <td className='p-2 '>{booking.price}</td>
        <td className='p-2'>{new Date(booking.bookingDate).toLocaleDateString()}</td>
        <td className='p-2'>
@@ -106,11 +110,23 @@ if(isLoading){
        </td>
        <td className='p-2 font-bold capitalize'>{booking.status}</td>
         
-        <td className='space-x-3 p-2'>
-            <button className='btn bg-primary hover:bg-secondary text-white font-semibold rounded-md'>
+        <td className='flex items-center gap-2 flex-col md:flex-row lg:flex-row p-2'>
+            <div>
+              <button onClick={()=> setEditBooking(booking)} className='btn bg-primary hover:bg-secondary text-white font-semibold rounded-md'>
                 <FaEdit />
                 
                 Edit</button>
+                {
+                  editBooking && (
+                    <UpdateBookingModal
+                    booking={editBooking}
+                    close={()=> setEditBooking(null)}
+                    refetch={refetch}
+                    
+                    />
+                  )
+                }
+            </div>
             <button onClick={()=> handleBookingDelete(booking._id)}  className='btn bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md'>
                 <FaTrashAlt />
 
