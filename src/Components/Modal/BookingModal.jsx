@@ -3,8 +3,10 @@ import React, { Fragment } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { useNavigate } from 'react-router';
 
 const BookingModal = ({service, user, close}) => {
+    const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
 const {register, handleSubmit,     formState: { errors, isSubmitting }
 } = useForm();
@@ -14,9 +16,10 @@ const handleBookingDecoration = async(data)=>{
         serviceName: service.service_name,
         userName: user.displayName,
         userEmail: user.email,
-        date: new Date(data.date),
+        price: service.cost,
+        bookingDate: new Date(data.date),
         location: data.location,
-        createdAt: new Date()
+        status: 'pending'
     }
     try {
         const res = await axiosSecure.post('/bookings', bookingInfo)
@@ -24,6 +27,8 @@ const handleBookingDecoration = async(data)=>{
         if(res.data.insertedId){
             toast.success('Booking Successfully!')
             close();
+            navigate('/dashboard/my-booking');
+            
 
 
         }
@@ -33,7 +38,9 @@ const handleBookingDecoration = async(data)=>{
         toast.error('Booking Failed!')
         
     }
-}   
+}
+
+
     return (
         <Transition show={true} as={Fragment}>
             <Dialog as='div' className="relative z-50" onClose={close}>

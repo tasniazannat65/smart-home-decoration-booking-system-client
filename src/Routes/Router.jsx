@@ -21,6 +21,8 @@ import ProjectStatusUpdate from "../Pages/DashboardPage/Decorator/ProjectStatus/
 import TodaySchedule from "../Pages/DashboardPage/Decorator/Schedule/TodaySchedule";
 import EarningSummary from "../Pages/DashboardPage/Decorator/EarningSummary/EarningSummary";
 import DecoratorPaymentHistory from "../Pages/DashboardPage/Decorator/PaymentHistory/DecoratorPaymentHistory";
+import PaymentSuccess from "../Pages/DashboardPage/paymentSuccess/PaymentSuccess";
+import PaymentCancel from "../Pages/DashboardPage/PaymentCancel/PaymentCancel";
 
 export const router = createBrowserRouter([
     {
@@ -79,6 +81,14 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/my-booking',
                 Component: MyBooking
+            },
+            {
+                path: '/dashboard/payment-success',
+            Component: PaymentSuccess
+            },
+            {
+                path: '/dashboard/payment-cancel',
+            Component: PaymentCancel
             },
             {
                 path: '/dashboard/payment-history',
