@@ -37,7 +37,7 @@ const Footer = () => {
                     </div>
 
                 </div>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-8'>
+                <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8'>
                     <div>
                         <h3 className='text-primary font-semibold mb-3'>Quick Links</h3>
                         <ul className='space-y-2 text-accent'>
