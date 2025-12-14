@@ -7,7 +7,11 @@ const ServiceCard = ({service}) => {
     const {image,service_name, description, cost, service_category, unit, _id } = service;
     return (
         <div className='bg-white rounded-xl shadow-md hover:shadow-xl transition p-4 border border-gray-200 space-y-4'>
-            <img src={image} alt={service_name} className='w-full h-60 object-cover rounded-lg' />
+            
+            <div className='overflow-hidden group'>
+                <img src={image} alt={service_name} className='w-full h-60 object-cover rounded-lg transition duration-500 group-hover:scale-110' />
+
+            </div>
             <h2 className='text-xl font-bold text-accent'>{service_name}</h2>
             <p className='text-neutral text-sm  line-clamp-2'>{description}</p>
             <div className='flex items-center justify-between'>

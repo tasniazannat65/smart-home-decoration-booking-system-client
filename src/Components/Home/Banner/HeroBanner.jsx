@@ -20,7 +20,7 @@ const HeroBanner = () => {
     return (
         <div className='relative w-full h-screen'>
             <img src={decor} alt="decoration" className='absolute w-full h-full object-cover brightness-75' />
-            <div className='absolute inset-0 bg-black/40'>
+            <div className='absolute inset-0 bg-black/40 pointer-events-none'>
 
             </div>
      
@@ -36,7 +36,7 @@ const HeroBanner = () => {
             </div>
             {
                 menuOpen && (
-                    <div className='absolute top-16 right-6 bg-black/70 text-white flex flex-col gap-4 p-4 rounded-md md:hidden lg:hidden'>
+                    <div className='absolute top-16 right-6 z-50 bg-black/70 text-white flex flex-col gap-4 p-4 rounded-md md:hidden lg:hidden'>
                         {links}
 
                     </div>

@@ -69,6 +69,8 @@ const Login = () => {
           {
             errors.password?.type==='pattern' && <p className='text-red-600'>Password must have one UpperCase, one LowerCase, one Number and one special character. </p>
           }
+                    <div><a className="link link-hover">Forgot password?</a></div>
+
           <button className="btn bg-gradient-to-r from-primary to-secondary text-white mt-4 font-medium">Register</button>
           <p className='text-[#71717A] text-[15px]'>Don’t have any account? <Link to='/sign-up' className='text-secondary hover:text-primary hover:underline'>Sign Up</Link></p>
           <div className='flex items-center gap-1'>

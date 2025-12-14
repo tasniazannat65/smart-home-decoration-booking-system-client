@@ -172,7 +172,7 @@ const MyBooking = () => {
                     className="btn bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md"
                   >
                     <FaTrashAlt />
-                    Delete
+                    Cancel
                   </button>
                 </td>
               </tr>

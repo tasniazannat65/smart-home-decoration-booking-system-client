@@ -4,7 +4,7 @@ import logoImg from '../assets/logo.png'
 import { Link, NavLink, Outlet } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import { FiPackage } from "react-icons/fi";
-import { FaClipboardCheck, FaRegCreditCard, FaTasks } from 'react-icons/fa';
+import { FaBoxOpen, FaChartBar, FaChartLine, FaClipboardCheck, FaClipboardList, FaMoneyCheckAlt, FaRegCreditCard, FaTasks, FaUserPlus, FaUserTie } from 'react-icons/fa';
 import {  MdOutlinePayment, MdPaid, MdSchedule } from "react-icons/md";
 
 
@@ -54,7 +54,9 @@ const DashboardLayout = () => {
           </Link>
         </li>
         {/* user can access these page */}
-        <li>
+        {
+          role === 'user' && <>
+          <li>
             <NavLink to='/dashboard/my-booking' 
             className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="My Booking"
             >
@@ -77,19 +79,12 @@ const DashboardLayout = () => {
               
               Payment History</span></NavLink>
         </li>
-        <li>
-         <NavLink to='/dashboard/profile' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Profile"
-            >
-              <CgProfile size={24}/>
-
-              
-              
-              <span className="is-drawer-close:hidden">
-              
-              Profile</span></NavLink>
-
-       </li>
+       
+          
+          </>
+        }
+        
+       {/* decorator can access these page */}
 
         {
           role === 'decorator' && <>
@@ -160,46 +155,111 @@ const DashboardLayout = () => {
           </>
         }
 
-
+{/* admin can manage these page */}
 
         {
           role === 'admin' && <>
            <li>
-            <NavLink to='/dashboard/approve-riders' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Approve Riders"
+            <NavLink to='/dashboard/manage-services' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Manage Services & Packages"
             >
-              {/* <FaMotorcycle size={24}/> */}
+              <FaBoxOpen size={24} />
+
               
               
               <span className="is-drawer-close:hidden">
               
-              Approve Riders</span></NavLink>
+              Manage Services & Packages</span></NavLink>
         </li>
            <li>
-            <NavLink to='/dashboard/assign-riders' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Assign Riders"
+            <NavLink to='/dashboard/manage-decorators' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Manage Decorators"
             >
-              {/* <MdDirectionsBike size={24} /> */}
+              <FaUserTie size={24} />
+
               
               
               <span className="is-drawer-close:hidden">
               
-              Assign Riders</span></NavLink>
+              Manage Decorators</span></NavLink>
+        </li>
+           <li>
+            <NavLink to='/dashboard/assign-decorators' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Assign Decorators"
+            >
+              <FaUserPlus size={24} />
+
+              
+              
+              <span className="is-drawer-close:hidden">
+              
+              Assign Decorators</span></NavLink>
         </li>
         <li>
-            <NavLink to='/dashboard/users-management' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Users Management"
+            <NavLink to='/dashboard/booking-management' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Bookings"
             >
-              {/* <FaUsers size={24}/> */}
+              <FaClipboardList size={24} />
+
               
               
               <span className="is-drawer-close:hidden">
               
-              Users Management</span></NavLink>
+              Bookings</span></NavLink>
+        </li>
+        <li>
+            <NavLink to='/dashboard/payments' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Payments Verification"
+            >
+              <FaMoneyCheckAlt size={24} />
+
+              
+              
+              <span className="is-drawer-close:hidden">
+              
+              Payments Verification</span></NavLink>
+        </li>
+        <li>
+            <NavLink to='/dashboard/revenue' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Revenue"
+            >
+              <FaChartLine size={24} />
+
+              
+              
+              <span className="is-drawer-close:hidden">
+              
+              Revenue</span></NavLink>
+        </li>
+        <li>
+            <NavLink to='/dashboard/analytics' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Analytics"
+            >
+              <FaChartBar size={24} />
+
+              
+              
+              <span className="is-drawer-close:hidden">
+              
+              Analytics</span></NavLink>
         </li>
           
           </>
         }
+
+         <li>
+         <NavLink to='/dashboard/profile' 
+            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Profile"
+            >
+              <CgProfile size={24}/>
+
+              
+              
+              <span className="is-drawer-close:hidden">
+              
+              Profile</span></NavLink>
+
+       </li>
        
 
        

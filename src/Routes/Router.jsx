@@ -23,6 +23,15 @@ import EarningSummary from "../Pages/DashboardPage/Decorator/EarningSummary/Earn
 import DecoratorPaymentHistory from "../Pages/DashboardPage/Decorator/PaymentHistory/DecoratorPaymentHistory";
 import PaymentSuccess from "../Pages/DashboardPage/User/paymentSuccess/PaymentSuccess";
 import PaymentCancel from "../Pages/DashboardPage/User/PaymentCancel/PaymentCancel";
+import AdminRoute from "./AdminRoute";
+import ManageServices from "../Pages/DashboardPage/Admin/ManageServices/ManageServices";
+import ManageDecorators from "../Pages/DashboardPage/Admin/ManageDecorators/ManageDecorators";
+import AssignDecorators from "../Pages/DashboardPage/Admin/AssignDecorators/AssignDecorators";
+import BookingManagement from "../Pages/DashboardPage/Admin/Bookings/BookingManagement";
+import Payments from "../Pages/DashboardPage/Admin/Payments/Payments";
+import Revenue from "../Pages/DashboardPage/Admin/Revenue/Revenue";
+import Analytics from "../Pages/DashboardPage/Admin/Analytics/Analytics";
+import DashboardHome from "../Pages/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +83,10 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        index: true,
+        Component: DashboardHome,
+      },
       {
         path: "/dashboard/profile",
         Component: Profile,
@@ -134,6 +147,49 @@ export const router = createBrowserRouter([
           </DecoratorRoute>
         ),
       },
+      {
+        path: '/dashboard/manage-services',
+        element: <AdminRoute>
+        <ManageServices/>
+        </AdminRoute>
+      },
+      {
+        path: '/dashboard/manage-decorators',
+        element: <AdminRoute>
+        <ManageDecorators/>
+        </AdminRoute>
+      },
+      {
+        path: '/dashboard/assign-decorators',
+        element: <AdminRoute>
+        <AssignDecorators/>
+        </AdminRoute>
+      },
+      {
+        path: '/dashboard/booking-management',
+        element: <AdminRoute>
+        <BookingManagement/>
+        </AdminRoute>
+      },
+      {
+        path: '/dashboard/payments',
+        element: <AdminRoute>
+        <Payments/>
+        </AdminRoute>
+      },
+      {
+        path: '/dashboard/revenue',
+        element: <AdminRoute>
+        <Revenue/>
+        </AdminRoute>
+      },
+      {
+        path: '/dashboard/analytics',
+        element: <AdminRoute>
+        <Analytics/>
+        </AdminRoute>
+      },
+
     ],
   },
 ]);
