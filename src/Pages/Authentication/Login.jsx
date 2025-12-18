@@ -15,7 +15,7 @@ const Login = () => {
             const handleLogin = (data)=>{
             signInUser(data.email, data.password)
             .then(result=>{
-                console.log(result.user)
+                // console.log(result.user)
                 toast.success('Logged in successfully!')
                 navigate(location.state || '/')
             })
@@ -71,7 +71,7 @@ const Login = () => {
           }
                     <div><a className="link link-hover">Forgot password?</a></div>
 
-          <button className="btn bg-gradient-to-r from-primary to-secondary text-white mt-4 font-medium">Register</button>
+          <button className="btn bg-gradient-to-r from-primary to-secondary text-white mt-4 font-medium">Login</button>
           <p className='text-[#71717A] text-[15px]'>Don’t have any account? <Link to='/sign-up' className='text-secondary hover:text-primary hover:underline'>Sign Up</Link></p>
           <div className='flex items-center gap-1'>
             <div className='border-t border-gray-400 w-full'></div>

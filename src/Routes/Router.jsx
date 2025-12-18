@@ -17,7 +17,6 @@ import MyBooking from "../Pages/DashboardPage/User/Booking/MyBooking";
 import PaymentHistory from "../Pages/DashboardPage/User/Payment/PaymentHistory";
 import DecoratorRoute from "./DecoratorRoute";
 import AssignedProject from "../Pages/DashboardPage/Decorator/AssignedProject/AssignedProject";
-import ProjectStatusUpdate from "../Pages/DashboardPage/Decorator/ProjectStatus/ProjectStatusUpdate";
 import TodaySchedule from "../Pages/DashboardPage/Decorator/Schedule/TodaySchedule";
 import EarningSummary from "../Pages/DashboardPage/Decorator/EarningSummary/EarningSummary";
 import DecoratorPaymentHistory from "../Pages/DashboardPage/Decorator/PaymentHistory/DecoratorPaymentHistory";
@@ -28,7 +27,6 @@ import ManageServices from "../Pages/DashboardPage/Admin/ManageServices/ManageSe
 import ManageDecorators from "../Pages/DashboardPage/Admin/ManageDecorators/ManageDecorators";
 import AssignDecorators from "../Pages/DashboardPage/Admin/AssignDecorators/AssignDecorators";
 import BookingManagement from "../Pages/DashboardPage/Admin/Bookings/BookingManagement";
-import Payments from "../Pages/DashboardPage/Admin/Payments/Payments";
 import Revenue from "../Pages/DashboardPage/Admin/Revenue/Revenue";
 import Analytics from "../Pages/DashboardPage/Admin/Analytics/Analytics";
 import DashboardHome from "../Pages/DashboardHome/DashboardHome";
@@ -115,14 +113,7 @@ export const router = createBrowserRouter([
           </DecoratorRoute>
         ),
       },
-      {
-        path: "/dashboard/project-status/:id",
-        element: (
-          <DecoratorRoute>
-            <ProjectStatusUpdate />
-          </DecoratorRoute>
-        ),
-      },
+     
       {
         path: "/dashboard/today-schedule",
         element: (
@@ -171,12 +162,7 @@ export const router = createBrowserRouter([
         <BookingManagement/>
         </AdminRoute>
       },
-      {
-        path: '/dashboard/payments',
-        element: <AdminRoute>
-        <Payments/>
-        </AdminRoute>
-      },
+     
       {
         path: '/dashboard/revenue',
         element: <AdminRoute>

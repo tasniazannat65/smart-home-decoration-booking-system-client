@@ -44,6 +44,7 @@ const Services = () => {
                      min: debouncedMin ? Number(debouncedMin) : 0,
                       max: debouncedMax ? Number(debouncedMax) : 9999999}
             })
+            console.log(res.data)
             return res.data
         }
     })

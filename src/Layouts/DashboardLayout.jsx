@@ -4,14 +4,18 @@ import logoImg from '../assets/logo.png'
 import { Link, NavLink, Outlet } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import { FiPackage } from "react-icons/fi";
-import { FaBoxOpen, FaChartBar, FaChartLine, FaClipboardCheck, FaClipboardList, FaMoneyCheckAlt, FaRegCreditCard, FaTasks, FaUserPlus, FaUserTie } from 'react-icons/fa';
+import { FaBoxOpen, FaChartBar, FaChartLine, FaClipboardCheck, FaClipboardList,  FaRegCreditCard, FaTasks, FaUserPlus, FaUserTie } from 'react-icons/fa';
 import {  MdOutlinePayment, MdPaid, MdSchedule } from "react-icons/md";
+import Loading from '../Components/Shared/Loading/Loading';
 
 
 
 
 const DashboardLayout = () => {
-    const {role} = useRole()
+    const {role, roleLoading} = useRole();
+    if(roleLoading){
+      return <Loading/>
+    }
     return (
       <div className="drawer lg:drawer-open">
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -25,6 +29,7 @@ const DashboardLayout = () => {
 <p className=" font-bold text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent "> Dashboard</p>    </nav>
    <div className=' min-h-screen'>
     <div className='w-11/12 mx-auto py-10'>
+   
       <Outlet />
     </div>
    </div>
@@ -101,18 +106,7 @@ const DashboardLayout = () => {
               
               Assigned Projects</span></NavLink>
         </li>
-           <li>
-            <NavLink to='/dashboard/project-status/:id' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Project Status Update"
-            >
-              <FaClipboardCheck size={24}/>
-
-              
-              
-              <span className="is-drawer-close:hidden">
-              
-              Project Status Update</span></NavLink>
-        </li>
+          
            <li>
             <NavLink to='/dashboard/today-schedule' 
             className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Today's Schedule"
@@ -183,18 +177,6 @@ const DashboardLayout = () => {
               
               Manage Decorators</span></NavLink>
         </li>
-           <li>
-            <NavLink to='/dashboard/assign-decorators' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Assign Decorators"
-            >
-              <FaUserPlus size={24} />
-
-              
-              
-              <span className="is-drawer-close:hidden">
-              
-              Assign Decorators</span></NavLink>
-        </li>
         <li>
             <NavLink to='/dashboard/booking-management' 
             className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Bookings"
@@ -207,18 +189,9 @@ const DashboardLayout = () => {
               
               Bookings</span></NavLink>
         </li>
-        <li>
-            <NavLink to='/dashboard/payments' 
-            className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Payments Verification"
-            >
-              <FaMoneyCheckAlt size={24} />
-
-              
-              
-              <span className="is-drawer-close:hidden">
-              
-              Payments Verification</span></NavLink>
-        </li>
+           
+        
+       
         <li>
             <NavLink to='/dashboard/revenue' 
             className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg " data-tip="Revenue"

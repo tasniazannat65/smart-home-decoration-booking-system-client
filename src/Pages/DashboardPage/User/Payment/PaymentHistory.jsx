@@ -40,7 +40,7 @@ const PaymentHistory = () => {
         payments.map((payment, index)=>  <tr key={payment._id}>
         <th className="p-2">{index + 1}</th>
         <td className="p-2">{payment.serviceName}</td>
-        <td className="p-2">${payment.amount}</td>
+        <td className="p-2">${payment.price}</td>
         <td className="p-2">{new Date(payment.paidAt).toLocaleDateString()}</td>
         <td className={payment.paymentStatus === 'paid' ? 'text-primary font-bold p-2' : 'text-red-600 font-bold p-2'}>
             {payment.paymentStatus}

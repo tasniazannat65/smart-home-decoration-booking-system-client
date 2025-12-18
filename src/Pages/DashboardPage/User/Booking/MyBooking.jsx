@@ -26,11 +26,7 @@ const MyBooking = () => {
     },
   });
 
-  const priority = {
-    pending: 1,
-    approved: 2,
-    completed: 3
-  }
+  
 
   const sortedBookings = [...bookings].sort((a, b)=> {
     if(sorted === 'newDate'){
@@ -42,10 +38,11 @@ const MyBooking = () => {
 
     }
     if(sorted === 'statusAsc'){
-      return priority[a.status] - priority[b.status]
+      return (a.status || "").localeCompare(b.status || "")
     }
     if(sorted === 'statusDesc'){
-      return priority[b.status] - priority[a.status]
+            return (b.status || "").localeCompare(a.status || "")
+
     }
     return 0;
   })
@@ -129,7 +126,7 @@ const MyBooking = () => {
           <tbody>
             {sortedBookings.map((booking, index) => (
               <tr key={booking._id}>
-                <th className="p-2">{index + 1}</th>
+                <td className="p-2">{index + 1}</td>
                 <td className="p-2 ">{booking.serviceName}</td>
                 <td className="p-2 ">{booking.location}</td>
                 <td className="p-2 ">{booking.price}</td>

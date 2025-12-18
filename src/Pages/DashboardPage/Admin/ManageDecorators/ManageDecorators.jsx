@@ -10,20 +10,31 @@ import EditUserModal from '../../../../Components/Modal/EditUserModal';
 
 const ManageDecorators = () => {
   const axiosSecure = useAxiosSecure();
+        const [search, setSearch] = useState("");
+  
+   const [page, setPage] = useState(1);
+            const limit = 5;
   const [editUser, setEditUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   
   const {
-    data: users = [],
+    data,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users", page, limit, search],
     queryFn: async () => {
-      const res = await axiosSecure.get('/users');
+      const res = await axiosSecure.get('/users', {
+          params: {
+                    page, limit, search
+                }
+      });
+      console.log(res.data)
       return res.data;
     },
   });
+    const users = data?.users || [];
+  const totalPages = data?.totalPages || 1;
   const handleMakeDecorator = async(id)=>{
     try {
         await axiosSecure.put(`users/${id}/make-decorator`);
@@ -103,6 +114,11 @@ const ManageDecorators = () => {
     return (
          <div>
       <Heading title="Manage Decorators" center />
+           <div className='flex lg:justify-start justify-center'>
+             <input type="text" placeholder='Search Services...' value={search} onChange={(e)=> {setSearch(e.target.value);
+                  setPage(1);
+                }}  className='border px-2 py-1 rounded focus:ring-2 focus:ring-primary focus:outline-none transition duration-300 ease-in-out hover:shadow-md' />
+           </div>
      
 
       <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">
@@ -178,6 +194,37 @@ const ManageDecorators = () => {
           </tbody>
         </table>
       </div>
+       <div className='flex gap-2 justify-center mt-4'>
+                    <button
+                    disabled={page === 1}
+                    onClick={()=> setPage(page - 1)}
+                    className='btn btn-sm bg-primary/20'
+                    
+                    >
+                      Prev
+
+                    </button>
+                    {[
+                      ...Array(totalPages).keys()
+                    ].map(num => (
+                      <button
+                      key={num}
+                      onClick={()=> setPage(num + 1)}
+                      className={`btn btn=sm ${page === num + 1 ? 'btn-primary' : ''}`}
+                      
+                      >
+                        {num + 1}
+
+                      </button>
+                    ))}
+                    <button disabled={page === totalPages}
+                    onClick={()=> setPage(page + 1)}
+                    className='btn btn-sm bg-primary/20'
+                    >
+                      Next
+                    </button>
+
+                  </div>
     </div>
     );
 };
