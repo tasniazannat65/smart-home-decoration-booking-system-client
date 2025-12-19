@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Loading from '../../Components/Shared/Loading/Loading';
 import Heading from '../../Components/Shared/Heading/Heading';
+import DecoratorSpecialties from '../DashboardPage/Decorator/DecoratorSpecialties/DecoratorSpecialties';
 
 
 const DecoratorDashboard = () => {
@@ -20,6 +21,7 @@ const DecoratorDashboard = () => {
      }
     return (
         <div>
+            <title>Laxius Decor || Decorator Dashboard</title>
             <Heading title="Decorator Dashboard"/>
            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
              <div className='bg-base-100 shadow rounded-xl p-6'>
@@ -43,7 +45,16 @@ const DecoratorDashboard = () => {
                 </h2>
 
             </div>
+            
+       
            </div>
+           <div className='mt-8 max-w-3xl mx-auto'>
+                <DecoratorSpecialties current={data.specialties || []}
+                rating = {data.rating || 0}
+                />
+
+            </div>
+        
             
         </div>
     );

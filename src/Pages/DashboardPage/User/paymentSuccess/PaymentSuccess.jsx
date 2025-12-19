@@ -17,7 +17,6 @@ const PaymentSuccess = () => {
       axiosSecure
         .patch(`/payment-success?session_id=${sessionId}`)
         .then((res) => {
-          console.log(res.data);
           setPaymentInfo({
             transactionId: res.data.transactionId,
           });
@@ -39,6 +38,7 @@ const PaymentSuccess = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-base-200 rounded-xl shadow-lg">
+      <title>Laxius Decor || Payment Success</title>
       {showConfetti && (
         <Confetti
           width={window.innerWidth}

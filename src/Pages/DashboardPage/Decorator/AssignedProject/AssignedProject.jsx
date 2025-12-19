@@ -37,6 +37,7 @@ const AssignedProject = () => {
     }
     return (
         <div className='p-6'>
+            <title>Laxius Decor || Assign Project</title>
 
             <Heading title="My Assigned Projects" center/>
             {

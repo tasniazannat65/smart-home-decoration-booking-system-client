@@ -24,7 +24,7 @@ const AddServiceModal = ({isOpen, setIsOpen, refetch}) => {
             closeModal();
             
         } catch (error) {
-            console.log(error)
+           
             toast.error('Failed to add service')
             
         }

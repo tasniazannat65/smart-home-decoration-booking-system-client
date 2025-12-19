@@ -29,6 +29,7 @@ const UserDashboard = () => {
       } = data;
     return (
         <div className='space-y-8 p-6 md:p-8 lg:p-10'>
+            <title>Laxius Decor || User Dashboard</title>
             <div className='flex flex-col md:flex-row lg:flex-row justify-between items-center gap-4'>
                 <div>
                     <h1 className='text-3xl font-bold text-accent'>Hello, {user?.displayName || 'User'}!</h1>

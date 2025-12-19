@@ -18,12 +18,10 @@ const SignUp = () => {
         const axiosSecure = useAxiosSecure();
 
         const handleRegistration = (data)=>{
-          console.log(data)
 
           const profileImg = data.photo[0];
           createUser(data.email, data.password)
           .then(result=>{
-            console.log(result.user)
             const formData = new FormData();
             formData.append('image', profileImg);
             const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host}`
@@ -49,7 +47,7 @@ const SignUp = () => {
               }
               updateUserProfile(userProfile)
               .then(()=>{
-                console.log('user profile updated')
+                toast.success('user profile updated')
                 navigate(location.state || '/')
               })
               .catch(error=>{
@@ -66,6 +64,7 @@ const SignUp = () => {
 
     return (
        <div className='flex justify-center items-center min-h-screen bg-white'>
+        <title>Laxius Decor || Sign Up</title>
          <div className='flex flex-col max-w-md p-6 rounded-md md:p-8 lg:p-10 bg-gray-100 text-gray-900'>
 
             <div className='mb-8 text-center'>

@@ -23,7 +23,6 @@ const ManagePackages = ({services}) => {
           const res = await axiosSecure.get(
             `/packages?search=${search}&category=${category}&page=${page}&limit=${limit}`
           )
-          console.log('ser', res.data)
           return res.data;
         }
       })
@@ -42,7 +41,6 @@ const ManagePackages = ({services}) => {
                 }).then((result) => {
                   if (result.isConfirmed) {
                     axiosSecure.delete(`/packages/${id}`).then((res) => {
-                      // console.log(res.data);
                       if (res.data.deletedCount) {
                         refetch();
                         Swal.fire({
@@ -57,6 +55,7 @@ const ManagePackages = ({services}) => {
       }
     return (
          <div className='p-4 bg-white shadow rounded-lg'>
+          <title>Laxius Decor || Manage Packages</title>
             <div className='flex justify-between items-center mb-4'>
             <h2 className='text-xl font-bold text-accent'>Packages</h2>
             <button onClick={()=> setIsOpen(true)} className='bg-primary text-white px-4 py-2

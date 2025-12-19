@@ -7,6 +7,7 @@ const Contact = () => {
   return (
     
       <div className='md:bg-gray-300 lg:bg-gray-300 flex flex-col md:flex-row lg:flex-row min-h-[280px] w-full md:relative lg:relative py-10 md:py-0 lg:py-0'>
+        <title>Laxius Decor || Contact Us</title>
       <img src={image} alt="Person" className=' lg:absolute md:absolute lg:top-16 md:top-16 shadow-xl lg:left-[490px] md:left-60 lg:h-[500px] md:h-[300px]' />
 
         <div className='w-full p-6 md:p-12 lg:p-16 flex justify-center items-center md:absolute lg:absolute z-30 lg:top-36 md:top-28 lg:right-80 md:right-60'>

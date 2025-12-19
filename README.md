@@ -1,4 +1,4 @@
-# Laxius Decor
+# 🏠Laxius Decor
 #### **Smart Home & Ceremony Decoration Booking System**
 
 ## Project Overview
@@ -12,22 +12,22 @@ The system solves common issues faced by local decorators:
 - No system for on-site service coordination
 
 -----
-## Key Features
+## 📦Key Features
 
-### User
+### 👤User
 
 - Browse decoration services
 - Book consultations or on-site services
 - Cancel or reschedule bookings
 - Make payments & payment status
 
-### Decorator
+### 🎨Decorator
 
 - View assigned projects
 - Update project status
 - Track today's schedule and earnings
 
-### Admin
+### 🛠️Admin
 
 - Manage decorators (CRUD)
 - Approve or disable decorator account
@@ -36,7 +36,7 @@ The system solves common issues faced by local decorators:
 - Monitor revenue and services demand
 ----
 
-## Technology Stack
+## ⚙️Technology Stack
 
 ### **Frontend**
 
@@ -71,16 +71,16 @@ The system solves common issues faced by local decorators:
 - Login-Register
 ----
 
-## Client-Side Repository Link
+## 🔗Client-Side Repository Link
 
    
-## Server-Side Repository Link
+## 🔗Server-Side Repository Link
 
-## Website Live URL
+## 🌐Website Live URL
 
 
 
-## Installation 
+## 🛠️Installation 
 
     git clone 
     cd Laxius-Decor

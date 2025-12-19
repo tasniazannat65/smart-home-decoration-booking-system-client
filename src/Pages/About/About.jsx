@@ -15,6 +15,7 @@ import Heading from '../../Components/Shared/Heading/Heading';
 const About = () => {
   return (
     <div className='text-gray-800'>
+      <title>Laxius Decor || About Us</title>
       <section className='relative h-96 md:h-[500px] lg:h-[600px] w-full overflow-hidden'>
         <video className='absolute inset-0 w-full h-full object-cover' src={video}
         autoPlay

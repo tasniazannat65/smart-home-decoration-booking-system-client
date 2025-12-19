@@ -17,6 +17,7 @@ const DecoratorPaymentHistory = () => {
     }
     return (
         <div className='bg-base-100 shadow  rounded-xl mt-6 overflow-x-auto rounded-box border-2 border-primary'>
+            <title>Laxius Decor || Decorator Payment History</title>
             <table className='table'>
                 <thead className='bg-base-200'>
                     <tr>

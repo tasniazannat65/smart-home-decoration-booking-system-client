@@ -60,7 +60,6 @@ const ManageServices = () => {
         }).then((result) => {
           if (result.isConfirmed) {
             axiosSecure.delete(`/services/${id}`).then((res) => {
-              // console.log(res.data);
               if (res.data.deletedCount) {
                 refetch();
                 Swal.fire({
@@ -79,6 +78,7 @@ const ManageServices = () => {
 
     return (
         <div>
+          <title>Laxius Decor || Manage Services</title>
             <Heading title="Manage Services & Packages" center/>
              <Tabs>
     <TabList className='flex border-b-2 border-gray-200 mb-4'>

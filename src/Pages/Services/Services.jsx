@@ -44,7 +44,6 @@ const Services = () => {
                      min: debouncedMin ? Number(debouncedMin) : 0,
                       max: debouncedMax ? Number(debouncedMax) : 9999999}
             })
-            console.log(res.data)
             return res.data
         }
     })
@@ -53,6 +52,7 @@ const Services = () => {
     }
     return (
         <div>
+            <title>Laxius Decor || Services</title>
             <Container>
                 <Link to="/" className='text-primary flex items-center mt-5 hover:text-secondary'><FaArrowLeft/>Back to home</Link>
             <div className='max-w-4xl mx-auto py-4 md:py-6 lg:py-8'>

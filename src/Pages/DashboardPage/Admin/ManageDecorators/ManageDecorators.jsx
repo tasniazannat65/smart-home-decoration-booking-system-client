@@ -29,7 +29,6 @@ const ManageDecorators = () => {
                     page, limit, search
                 }
       });
-      console.log(res.data)
       return res.data;
     },
   });
@@ -42,7 +41,6 @@ const ManageDecorators = () => {
         refetch();
         
     } catch (error) {
-        console.log(error)
         toast.error('Failed to make a decorator')
         
     }
@@ -54,7 +52,7 @@ const ManageDecorators = () => {
         refetch();
         
     } catch (error) {
-        console.log(error)
+       
         toast.error('Failed to approve decorator')
         
     }
@@ -66,7 +64,6 @@ const ManageDecorators = () => {
         refetch();
         
     } catch (error) {
-        console.log(error)
         toast.error('Failed to disable decorator')
         
     }
@@ -78,7 +75,6 @@ const ManageDecorators = () => {
         refetch();
         setEditUser(null);
     } catch (error) {
-        console.log(error)
         toast.error('Failed to update user info');
         
     }
@@ -95,7 +91,6 @@ const ManageDecorators = () => {
         }).then((result) => {
           if (result.isConfirmed) {
             axiosSecure.delete(`/users/${id}`).then((res) => {
-            //   console.log(res.data);
               if (res.data.deletedCount) {
                 refetch();
                 Swal.fire({
@@ -113,6 +108,7 @@ const ManageDecorators = () => {
   }
     return (
          <div>
+          <title>Laxius Decor || Manage Decorators</title>
       <Heading title="Manage Decorators" center />
            <div className='flex lg:justify-start justify-center'>
              <input type="text" placeholder='Search Services...' value={search} onChange={(e)=> {setSearch(e.target.value);
@@ -127,6 +123,8 @@ const ManageDecorators = () => {
           <thead className="bg-base-200 ">
             <tr>
               <th className="text-primary font-bold text-lg">SL.</th>
+              <th className="text-primary font-bold text-lg">Image</th>
+
 
               <th className="text-primary font-bold text-lg">Name</th>
               <th className="text-primary font-bold text-lg">Email</th>
@@ -138,7 +136,16 @@ const ManageDecorators = () => {
           <tbody>
             {users.map((user, index) => (
               <tr key={user._id}>
-                <th className="p-2">{index + 1}</th>
+                <td className="p-2">{index + 1}</td>
+
+                <td className="p-2">
+ <div className="mask mask-squircle h-12 w-12">
+                <img
+                  src={user?.photoURL}
+                  alt="Avatar Tailwind CSS Component" />
+              </div>
+
+                </td>
                 <td className="p-2 ">{user.displayName}</td>
                 <td className="p-2 ">{user.email}</td>
                 <td className="p-2 ">{user.role}</td>

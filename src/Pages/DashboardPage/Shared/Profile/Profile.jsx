@@ -12,6 +12,7 @@ const Profile = () => {
   }
   return (
     <div className="flex justify-center items-center min-h-screen p-4">
+      <title>Laxius Decor || Profile</title>
       <div className="bg-base-200 shadow-lg rounded-xl border border-primary/30 w-full max-w-3xl p-6">
         <div className="flex flex-col items-center">
           <img

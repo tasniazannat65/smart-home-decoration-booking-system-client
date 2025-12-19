@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import { useNavigate } from 'react-router';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://smart-home-decor-server.vercel.app'
 })
 
 const useAxiosSecure = () => {
@@ -18,7 +18,7 @@ const useAxiosSecure = () => {
        const resInterceptor = axiosSecure.interceptors.response.use((response)=>{
         return response;
        }, (error)=>{
-        console.log(error);
+        
         const statusCode = error.status;
         if(statusCode === 401 || statusCode === 403){
             signOutUser()
@@ -26,7 +26,7 @@ const useAxiosSecure = () => {
                 navigate('/login')
             })
             .catch(error=>{
-                console.log(error);
+                console.error(error);
                 
             })
 

@@ -6,6 +6,7 @@ import { Link } from "react-router";
 const PaymentCancel = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-base-200 px-4 rounded-xl shadow-lg">
+      <title>Laxius Decor || Payment Cencel</title>
       <div className="w-60 h-60">
         <Lottie animationData={cancelPayment} loop={true} />
       </div>

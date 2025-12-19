@@ -16,6 +16,7 @@ const Revenue = () => {
     return (
         <div className='bg-white p-6
          rounded-xl shadow'>
+            <title>Laxius Decor || Revenue Analytics</title>
             <Heading title="Monthly Revenue"/>
             <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={data} margin={{top: 20, right: 30, left: 0, bottom: 10}}>

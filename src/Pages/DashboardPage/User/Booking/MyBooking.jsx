@@ -74,7 +74,6 @@ const MyBooking = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/bookings/${id}`).then((res) => {
-          console.log(res.data);
           if (res.data.deletedCount) {
             refetch();
             Swal.fire({
@@ -93,6 +92,7 @@ const MyBooking = () => {
   }
   return (
     <div>
+       <title>Laxius Decor || Service Booking</title>
       <Heading title="My Bookings" center />
       <div className="flex md:justify-end lg:justify-end justify-center my-4">
     <div className="relative">

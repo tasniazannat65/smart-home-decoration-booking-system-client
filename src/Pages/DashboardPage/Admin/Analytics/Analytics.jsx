@@ -11,7 +11,6 @@ const Analytics = () => {
         queryKey: ['service-demand'],
         queryFn: async()=>{
             const res = await axiosSecure.get('/admin/service-demand');
-            console.log('service demand', res.data)
             return res.data;
 
         }
@@ -22,6 +21,7 @@ const Analytics = () => {
     return (
         <div className='bg-white p-6
          rounded-xl shadow'>
+            <title>Laxius Decor || Service Demand Analytics</title>
         <Heading title="Service Demand"/>
         <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data} margin={{top: 20, right: 30, left: 0, bottom: 5}}>

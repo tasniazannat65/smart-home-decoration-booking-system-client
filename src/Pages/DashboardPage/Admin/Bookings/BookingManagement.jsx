@@ -28,6 +28,7 @@ const BookingManagement = () => {
     }
     return (
         <div>
+            <title>Laxius Decor || Booking Management</title>
             <Heading title="Manage Bookings" center/>
             <div className='overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5'>
                 <table className='table'>

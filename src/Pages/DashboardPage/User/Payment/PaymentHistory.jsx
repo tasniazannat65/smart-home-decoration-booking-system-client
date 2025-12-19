@@ -11,13 +11,20 @@ const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
     const {data: payments=[]} = useQuery({
         queryKey: ['payments', user.email],
+
         queryFn: async()=> {
             const res = await axiosSecure.get(`/payments?email=${user.email}`)
             return res.data;
-        }
+        },
+        staleTime: 0,
+        cacheTime: 0,
+        refetchOnWindowFocus: false,
+        keepPreviousData: false
+
     })
     return (
         <div className='bg-white rounded-4xl p-6'>
+          <title>Laxius Decor || Payment History</title>
       <Heading title="Payment History" center />
 
         <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">

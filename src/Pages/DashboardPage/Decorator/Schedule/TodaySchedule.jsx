@@ -11,7 +11,6 @@ const TodaySchedule = () => {
         refetchInterval: 60000,
         queryFn: async()=>{
             const res = await axiosSecure.get('/decorator/today-schedule');
-            console.log('schedule', res.data)
             return res.data;
         }
 
@@ -21,6 +20,7 @@ const TodaySchedule = () => {
     }
     return (
         <div className='p-6'>
+          <title>Laxius Decor || Today Schedule</title>
             <Heading title="Today's Schedule" center/>
             {
                 todayJobs.length === 0 ? (
@@ -52,7 +52,8 @@ const TodaySchedule = () => {
                                     <td className="p-2">{job.location}</td>
                                     <td className='p-2'>
                                         {
-                                            job.bookingDate ? new Date(job.bookingDate).toLocaleTimeString([], {
+                                            job.bookingDate ? new Date(job.bookingDate).toLocaleTimeString('en-BD', {
+                                              timeZone: 'Asia/Dhaka',
                                                 hour: '2-digit',
                                                 minute: '2-digit'
                                             }) : 'N/A'
@@ -60,7 +61,7 @@ const TodaySchedule = () => {
                                     </td>
                                     <td className="p-2">
                                      <span
-                                     className={`badge ${
+                                     className={`badge text-white ${
                                         job.status === 'completed' ? 'bg-green-600' :
                                         job.status === 'on_the_way' ? 'bg-blue-500' :
                                         job.status === 'materials_ready' ? 'bg-yellow-500' :

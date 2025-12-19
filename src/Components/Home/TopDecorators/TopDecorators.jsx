@@ -14,7 +14,7 @@ const TopDecorators = () => {
         queryKey: ['top-decorators'],
         queryFn: async()=>{
             const res = await axiosSecure.get('/users/top-decorators')
-            console.log(res.data)
+            
             return res.data;
         }
     })

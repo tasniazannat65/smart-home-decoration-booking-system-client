@@ -7,6 +7,7 @@ import TopDecorators from '../../Components/Home/TopDecorators/TopDecorators';
 const Home = () => {
     return (
         <div>
+            <title>Laxius Decor || Home</title>
             <section>
                 <HeroBanner/>
             </section>

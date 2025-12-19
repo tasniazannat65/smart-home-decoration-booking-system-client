@@ -17,6 +17,7 @@ const EarningSummary = () => {
     }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6'>
+            <title>Laxius Decor || Earning Summary</title>
             <div className='bg-base-100 shadow rounded-xl p-6'>
                 <p className='text-neutral'>Total Earnings</p>
                 <h2 className='text-3xl font-bold text-primary'>

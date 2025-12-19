@@ -8,7 +8,6 @@ import Heading from '../../Components/Shared/Heading/Heading';
 
 const CoverageArea = () => {
     const servicesArea = useLoaderData();
-    // console.log(servicesArea)
         const position = [23.6850, 90.3563];
             const mapRef = useRef(null);
             const handleSearch = (e)=>{
@@ -30,6 +29,7 @@ const CoverageArea = () => {
 
     return (
         <div className='my-16'>
+           <title>Laxius Decor || Coverage Area</title>
           <Container>
               <div className='max-w-4xl mx-auto'>
                     <Heading title="Search Service Availability" subtitle="Enter a city or area to check if we cover your location." center/>

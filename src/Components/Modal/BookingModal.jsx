@@ -25,7 +25,7 @@ const handleBookingDecoration = async(data)=>{
     }
     try {
         const res = await axiosSecure.post('/bookings', bookingInfo)
-        console.log(res.data)
+        
         if(res.data.insertedId){
             toast.success('Booking Successfully!')
             close();

@@ -15,7 +15,6 @@ const Login = () => {
             const handleLogin = (data)=>{
             signInUser(data.email, data.password)
             .then(result=>{
-                // console.log(result.user)
                 toast.success('Logged in successfully!')
                 navigate(location.state || '/')
             })
@@ -26,6 +25,7 @@ const Login = () => {
 
     return (
        <div className='flex justify-center items-center min-h-screen bg-white'>
+        <title>Laxius Decor || Login</title>
          <div className='flex flex-col max-w-md p-6 rounded-md md:p-8 lg:p-10 bg-gray-100 text-gray-900'>
 
             <div className='mb-8 text-center'>

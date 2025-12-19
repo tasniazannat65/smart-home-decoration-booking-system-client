@@ -16,7 +16,6 @@ const AssignDecorators = () => {
     queryKey: ['admin-to-assign-bookings'],
     queryFn: async()=> {
       const res = await axiosSecure.get('/bookings/admin-to-assign');
-      console.log(res.data)
       return res.data;
     }
 
@@ -29,7 +28,7 @@ const AssignDecorators = () => {
 
         params: {role: 'decorator', status: 'approved'}
       })
-      return res.data;
+      return res.data.users;
     }
    })
     if(bookingLoading || decoratorLoading){
@@ -59,6 +58,7 @@ const AssignDecorators = () => {
      }
     return (
         <div className="p-6 max-w-4xl mx-auto bg-gray-50 shadow-xl rounded-2xl mt-20">
+          <title>Laxius Decor || Assign Decorators</title>
       <h2 className="text-2xl text-primary font-bold mb-4">Assign Decorators</h2>
 
      {
