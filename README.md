@@ -72,18 +72,27 @@ The system solves common issues faced by local decorators:
 ----
 
 ## 🔗Client-Side Repository Link
+    https://github.com/tasniazannat65/smart-home-decoration-booking-system-client.git
 
    
 ## 🔗Server-Side Repository Link
 
+     https://github.com/tasniazannat65/smart-home-decoration-booking-system-server.git
+
 ## 🌐Website Live URL
+
+     https://laxius-decor.web.app/
 
 
 
 ## 🛠️Installation 
 
-    git clone 
+    Client-Side git clone  https://github.com/tasniazannat65/smart-home-decoration-booking-system-client.git 
+
+    Server-Side git clone  https://github.com/tasniazannat65/smart-home-decoration-booking-system-server.git
+
     cd Laxius-Decor
+    
     npm install
 
 ## Run Frontend
