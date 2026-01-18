@@ -26,26 +26,21 @@ const MyBooking = () => {
     },
   });
 
-  
-
-  const sortedBookings = [...bookings].sort((a, b)=> {
-    if(sorted === 'newDate'){
+  const sortedBookings = [...bookings].sort((a, b) => {
+    if (sorted === "newDate") {
       return new Date(b.bookingDate) - new Date(a.bookingDate);
-
     }
-    if(sorted === 'oldDate'){
+    if (sorted === "oldDate") {
       return new Date(a.bookingDate) - new Date(b.bookingDate);
-
     }
-    if(sorted === 'statusAsc'){
-      return (a.status || "").localeCompare(b.status || "")
+    if (sorted === "statusAsc") {
+      return (a.status || "").localeCompare(b.status || "");
     }
-    if(sorted === 'statusDesc'){
-            return (b.status || "").localeCompare(a.status || "")
-
+    if (sorted === "statusDesc") {
+      return (b.status || "").localeCompare(a.status || "");
     }
     return 0;
-  })
+  });
 
   const handlePayment = async (booking) => {
     const paymentInfo = {
@@ -92,19 +87,32 @@ const MyBooking = () => {
   }
   return (
     <div>
-       <title>Laxius Decor || Service Booking</title>
+      <title>Laxius Decor || Service Booking</title>
       <Heading title="My Bookings" center />
       <div className="flex md:justify-end lg:justify-end justify-center my-4">
-    <div className="relative">
-          <select  className="w-56 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-lg outline-none cursor-pointer hover:brightness-110 transition" value={sorted} onChange={(e)=> setSorted(e.target.value)}>
-  <option className="text-accent" value="" >Sort By</option>
-  <option className="text-accent" value="newDate">Date: Newest First</option>
-  <option className="text-accent" value="oldDate">Date: Oldest First</option>
-  <option className="text-accent" value="statusAsc">Status A-&gt; Z</option>
-  <option className="text-accent" value="statusDesc">Status Z-&gt;A</option>
-</select>
-    </div>
-
+        <div className="relative">
+          <select
+            className="w-56 px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-lg outline-none cursor-pointer hover:brightness-110 transition"
+            value={sorted}
+            onChange={(e) => setSorted(e.target.value)}
+          >
+            <option className="text-accent" value="">
+              Sort By
+            </option>
+            <option className="text-accent" value="newDate">
+              Date: Newest First
+            </option>
+            <option className="text-accent" value="oldDate">
+              Date: Oldest First
+            </option>
+            <option className="text-accent" value="statusAsc">
+              Status A-&gt; Z
+            </option>
+            <option className="text-accent" value="statusDesc">
+              Status Z-&gt;A
+            </option>
+          </select>
+        </div>
       </div>
 
       <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">
@@ -120,6 +128,7 @@ const MyBooking = () => {
               <th className="text-primary font-bold text-lg">Date</th>
               <th className="text-primary font-bold text-lg">Payment</th>
               <th className="text-primary font-bold text-lg"> Status</th>
+              <th className="text-primary font-bold text-lg"> Review</th>
               <th className="text-primary font-bold text-lg">Actions</th>
             </tr>
           </thead>
@@ -146,6 +155,22 @@ const MyBooking = () => {
                   )}
                 </td>
                 <td className="p-2 font-bold capitalize">{booking.status}</td>
+                <td className="p-2 font-bold capitalize">
+                  {
+                    booking.status === 'completed' && !booking.reviewed ? (
+                      <Link to={`/dashboard/review/${booking._id}`}
+                      className="btn btn-sm border-2
+                       btn-outline btn-primary"
+                      >
+                      Give Review
+                      </Link>
+                    ) : booking.reviewed ? (
+                      <span className="text-success font-semibold">Reviewed</span>
+                    ) : (
+                      <span className="text-accent text-sm">Not available</span>
+                    )
+                  }
+                </td>
 
                 <td className="flex items-center gap-2 flex-col md:flex-row lg:flex-row p-2">
                   <div>

@@ -24,21 +24,21 @@ const DecoratorDashboard = () => {
             <title>Laxius Decor || Decorator Dashboard</title>
             <Heading title="Decorator Dashboard"/>
            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-             <div className='bg-base-100 shadow rounded-xl p-6'>
+             <div className='bg-base-100 shadow border-base-300 rounded-xl p-6'>
                 <p className='text-neutral'>Total Completed Jobs</p>
                 <h2 className='text-3xl font-bold text-secondary'>
                     {data.totalJobs}
                 </h2>
 
             </div>
-            <div className='bg-base-100 shadow rounded-xl p-6'>
+            <div className='bg-base-100 shadow border-base-300 rounded-xl p-6'>
                 <p className='text-neutral'>Today's Schedule</p>
                 <h2 className='text-3xl font-bold text-secondary'>
                     {data.todayJobs}
                 </h2>
 
             </div>
-            <div className='bg-base-100 shadow rounded-xl p-6'>
+            <div className='bg-base-100 shadow border-base-300 rounded-xl p-6'>
                 <p className='text-neutral'>Total Earnings</p>
                 <h2 className='text-3xl font-bold text-secondary'>
                     {data.totalEarnings} BDT

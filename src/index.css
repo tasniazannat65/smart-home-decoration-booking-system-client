@@ -15,6 +15,25 @@
   --color-success: #10B981;
   --color-warning: #F59E0B;
 }
+@plugin "daisyui/theme" {
+  name: "dark";
+ 
+  --color-primary: #818cf8;
+  --color-secondary: #38bdf8;
+  --color-base-100: #1f2937;
+  --color-base-200: #111827;
+  --color-base-300: #0b1220;
+
+  --color-accent: #e5e7eb;
+  --color-neutral: #9ca3af;
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+}
+
+
+
+
 
 
 *{

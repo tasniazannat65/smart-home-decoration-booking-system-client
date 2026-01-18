@@ -30,6 +30,7 @@ import BookingManagement from "../Pages/DashboardPage/Admin/Bookings/BookingMana
 import Revenue from "../Pages/DashboardPage/Admin/Revenue/Revenue";
 import Analytics from "../Pages/DashboardPage/Admin/Analytics/Analytics";
 import DashboardHome from "../Pages/DashboardHome/DashboardHome";
+import Reviews from "../Pages/Reviews/Reviews";
 
 export const router = createBrowserRouter([
   {
@@ -175,6 +176,10 @@ export const router = createBrowserRouter([
         <Analytics/>
         </AdminRoute>
       },
+      {
+        path: '/dashboard/review/:bookingId',
+        Component: Reviews
+      }
 
     ],
   },

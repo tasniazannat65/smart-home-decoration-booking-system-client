@@ -38,10 +38,11 @@ const GoogleLogin = () => {
         })
     }
     return (
-       <button onClick={handleGoogleSignIn} className="btn bg-gray-300 text-black border-[#e5e5e5]">
+       <button onClick={handleGoogleSignIn} className="w-full flex text-base items-center justify-center gap-3 bg-base-100 border-2 border-base-300 hover:border-primary text-accent py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
+
         <FcGoogle size={16}/>
 
-  Login with Google
+  Continue with Google
 </button>
     );
 };
