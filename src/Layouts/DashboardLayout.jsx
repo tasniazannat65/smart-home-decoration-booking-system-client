@@ -6,20 +6,23 @@ import { CgProfile } from "react-icons/cg";
 import { FiPackage } from "react-icons/fi";
 import {
   FaBoxOpen,
-  FaChartBar,
-  FaChartLine,
+  
  
   FaClipboardList,
   FaRegCreditCard,
+  
   FaTasks,
   
   FaUserTie,
 } from "react-icons/fa";
 import { MdOutlinePayment, MdPaid, MdSchedule } from "react-icons/md";
 import Loading from "../Components/Shared/Loading/Loading";
+import useAuth from "../Hooks/useAuth";
+import { BiLogOut } from "react-icons/bi";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useRole();
+  const {  signOutUser } = useAuth();
   if (roleLoading) {
     return <Loading />;
   }
@@ -234,28 +237,9 @@ const DashboardLayout = () => {
                   </NavLink>
                 </li>
 
-                <li>
-                  <NavLink
-                    to="/dashboard/revenue"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg "
-                    data-tip="Revenue"
-                  >
-                    <FaChartLine size={24} />
-
-                    <span className="is-drawer-close:hidden">Revenue</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/dashboard/analytics"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:bg-secondary hover:text-white text-primary font-semibold text-lg "
-                    data-tip="Analytics"
-                  >
-                    <FaChartBar size={24} />
-
-                    <span className="is-drawer-close:hidden">Analytics</span>
-                  </NavLink>
-                </li>
+               
+              
+              
               </>
             )}
 
@@ -271,6 +255,21 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
           </ul>
+  <div className="w-full mt-auto border-t border-base-200">
+    <button
+    onClick={signOutUser}
+    className="flex items-center gap-3 w-full px-3 py-2 rounded-md text-red-500 font-semibold hover:bg-red-600 hover:text-white transition-all duration-300 is-drawer-close:tooltip is-drawer-close:tooltip-right"
+    data-tip="Logout"
+    >
+      <BiLogOut size={24}/>
+      <span className="is-drawer-close:hidden">Logout</span>
+
+    </button>
+
+  </div>
+
+
+    
         </div>
       </div>
     </div>

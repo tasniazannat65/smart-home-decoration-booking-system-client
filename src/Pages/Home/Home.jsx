@@ -6,7 +6,7 @@ import TopDecorators from '../../Components/Home/TopDecorators/TopDecorators';
 import WhyChooseUs from '../../Components/Home/WhyCooseUs/WhyChooseUs';
 import HowItWork from '../../Components/Home/HowItWork/HowItWork';
 import FAQ from '../../Components/Home/FaqSection/FAQ';
-// import HomeReviews from '../../Components/Home/ReviewsSection/HomeReviews';
+import HomeReviews from '../../Components/Home/ReviewsSection/HomeReviews';
 
 const Home = () => {
     return (
@@ -26,7 +26,7 @@ const Home = () => {
                 <HowItWork/>
             </section>
             <section>
-                {/* <HomeReviews/> */}
+                <HomeReviews/>
             </section>
             <section>
                 <TopDecorators/>

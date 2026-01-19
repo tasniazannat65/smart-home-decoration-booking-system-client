@@ -3,7 +3,8 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Components/Shared/Loading/Loading";
 import Card from "../../Components/Shared/AdminDashboard/Card";
-import { Link } from "react-router";
+import Revenue from "../DashboardPage/Admin/Revenue/Revenue";
+import Analytics from "../DashboardPage/Admin/Analytics/Analytics";
 
 const AdminDashboard = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,38 +30,13 @@ const AdminDashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-        <div className="bg-base-100 p-6 rounded-xl shadow flex flex-col justify-between ">
-          <div>
-            <h3 className="text-xl font-bold text-primary  mb-2">
-              📈 Revenue Analytics
-            </h3>
-            <p className="text-neutral">
-              View revenue trends, daily income & total earnings
-            </p>
-          </div>
-          <Link
-            to="/dashboard/revenue"
-            className="btn bg-primary hover:bg-secondary text-white mt-4"
-          >
-            View Revenue
-          </Link>
+        <div>
+          <Revenue/>
         </div>
-        <div className="bg-base-100 p-6 rounded-xl shadow flex flex-col justify-between ">
-          <div>
-            <h3 className="text-xl font-bold text-primary mb-2">
-              📊 Service Demand Analytics
-            </h3>
-            <p className="text-neutral">
-              See most booked services & demand histogram
-            </p>
-          </div>
-          <Link
-            to="/dashboard/analytics"
-            className="btn bg-primary text-white hover:bg-secondary mt-4"
-          >
-            View Analytics
-          </Link>
+        <div>
+          <Analytics/>
         </div>
+        
       </div>
     </div>
   );

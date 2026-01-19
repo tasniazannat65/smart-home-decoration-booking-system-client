@@ -27,8 +27,6 @@ import ManageServices from "../Pages/DashboardPage/Admin/ManageServices/ManageSe
 import ManageDecorators from "../Pages/DashboardPage/Admin/ManageDecorators/ManageDecorators";
 import AssignDecorators from "../Pages/DashboardPage/Admin/AssignDecorators/AssignDecorators";
 import BookingManagement from "../Pages/DashboardPage/Admin/Bookings/BookingManagement";
-import Revenue from "../Pages/DashboardPage/Admin/Revenue/Revenue";
-import Analytics from "../Pages/DashboardPage/Admin/Analytics/Analytics";
 import DashboardHome from "../Pages/DashboardHome/DashboardHome";
 import Reviews from "../Pages/Reviews/Reviews";
 
@@ -164,18 +162,7 @@ export const router = createBrowserRouter([
         </AdminRoute>
       },
      
-      {
-        path: '/dashboard/revenue',
-        element: <AdminRoute>
-        <Revenue/>
-        </AdminRoute>
-      },
-      {
-        path: '/dashboard/analytics',
-        element: <AdminRoute>
-        <Analytics/>
-        </AdminRoute>
-      },
+     
       {
         path: '/dashboard/review/:bookingId',
         Component: Reviews
