@@ -177,7 +177,7 @@ export const router = createBrowserRouter([
         </AdminRoute>
       },
       {
-        path: '/dashboard/review/:bookingId',
+        path: '/dashboard/review/:serviceId',
         Component: Reviews
       }
 
