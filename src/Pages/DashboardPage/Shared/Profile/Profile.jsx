@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import useAuth from '../../../../Hooks/useAuth';
 import useRole from '../../../../Hooks/useRole';
 import Loading from '../../../../Components/Shared/Loading/Loading';
 import { FaBriefcase, FaCheckCircle, FaCrown, FaEdit, FaEnvelope, FaPaintBrush, FaShieldAlt, FaUser, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router';
 import UpdateProfileModal from '../../../../Components/Modal/UpdateProfileModal';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const Profile = () => {
-  const {user} = useAuth();
   const {role, roleLoading} = useRole();
   const [isOpen, setIsOpen] = useState(false);
+  const axiosSecure = useAxiosSecure();
+  const {data: user, refetch, isLoading} = useQuery({
+    queryKey: ['profile'],
+    queryFn: async()=> {
+      const res = await axiosSecure.get('/users/profile');
+      return res.data;
+    }
+  })
   const getRoleIcon = () => {
     if(role === 'admin') return <FaCrown className='text-white'/>
     if(role === 'decorator') return <FaPaintBrush className='text-white'/>
@@ -18,11 +26,11 @@ const Profile = () => {
   }
   const getRoleColor = ()=> {
     if(role === 'admin') return 'from-primary to-primary/80';
-    if(role === 'decorator') return 'from-secondary to secondary/80';
+    if(role === 'decorator') return 'from-secondary to-secondary/80';
     return 'from-success to-success/80'
 
   }
-  if(roleLoading) return <Loading/>
+  if(roleLoading || isLoading) return <Loading/>
   return (
     <div className='min-h-screen bg-base-200 py-8 px-4 relative overflow-hidden'>
       <title>Laxius Decor || Profile</title>
@@ -167,7 +175,7 @@ const Profile = () => {
         </div>
 
       </div>
-      <UpdateProfileModal isOpen={isOpen} closeModal={()=> setIsOpen(false)} user={user}/>
+      <UpdateProfileModal isOpen={isOpen} closeModal={()=> setIsOpen(false)} user={user} refetch={refetch}/>
       
     </div>
   );

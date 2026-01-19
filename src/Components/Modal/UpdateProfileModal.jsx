@@ -1,5 +1,5 @@
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -8,11 +8,16 @@ import axios from 'axios';
 const UpdateProfileModal = ({isOpen, closeModal, user, refetch}) => {
 
     const axiosSecure = useAxiosSecure();
-    const {register, handleSubmit} = useForm({
+    const {register, handleSubmit, reset} = useForm({
         defaultValues: {
             name: user?.displayName || '',
         } 
     })
+    useEffect(()=>{
+      reset({
+        name: user?.displayName || ''
+      })
+    },[user, reset])
     const handleProfileUpdate = async(data)=>{
       let photoURL = user?.photoURL;
       if(data.photo?.[0]){
@@ -37,6 +42,7 @@ const UpdateProfileModal = ({isOpen, closeModal, user, refetch}) => {
             toast.success('Profile updated successfully');
             closeModal();
             refetch();
+           
         } catch (error) {
             toast.error('Profile update failed');
             
