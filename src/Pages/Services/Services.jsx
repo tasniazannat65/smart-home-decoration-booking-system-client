@@ -16,6 +16,8 @@ const Services = () => {
   const [category, setCategory] = useState("");
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
+  const [page, setPage] = useState(1);
+  const limit = 8;
   const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [debouncedMin, setDebouncedMin] = useState(min);
   const [debouncedMax, setDebouncedMax] = useState(max);
@@ -32,13 +34,14 @@ const Services = () => {
     return () => clearTimeout(handler);
   }, [max]);
 
-  const { data: services = [], isLoading } = useQuery({
+  const { data: servicesData = [], isLoading } = useQuery({
     queryKey: [
       "services",
       debouncedSearch,
       category,
       debouncedMin,
       debouncedMax,
+      page
     ],
     queryFn: async () => {
       const res = await axiosSecure.get("/services", {
@@ -47,11 +50,15 @@ const Services = () => {
           category,
           min: debouncedMin ? Number(debouncedMin) : 0,
           max: debouncedMax ? Number(debouncedMax) : 9999999,
+          page, 
+          limit,
         },
       });
       return res.data;
     },
   });
+  const services = servicesData.services || [];
+  const totalPages = servicesData.totalPages || 1;
   if (isLoading) {
     return <Loading />;
   }
@@ -143,11 +150,44 @@ const Services = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {services.map((service) => (
               <ServiceCard key={service._id} service={service} />
             ))}
           </div>
+           <div className="flex gap-2 justify-center mt-4">
+              <button
+                disabled={page === 1}
+                onClick={() => setPage(page - 1)}
+                className="btn btn-sm bg-primary/20"
+              >
+                Prev
+              </button>
+              {[...Array(totalPages).keys()].map((num) => (
+                <button
+                  key={num}
+                  onClick={() => setPage(num + 1)}
+                  className={`btn btn=sm ${
+                    page === num + 1 ? "btn-primary" : ""
+                  }`}
+                >
+                  {num + 1}
+                </button>
+              ))}
+              <button
+                disabled={page === totalPages}
+                onClick={() => setPage(page + 1)}
+                className="btn btn-sm bg-primary/20"
+              >
+                Next
+              </button>
+            </div>
+          
+          </>
+         
+
+           
         )}
       </Container>
     </div>
