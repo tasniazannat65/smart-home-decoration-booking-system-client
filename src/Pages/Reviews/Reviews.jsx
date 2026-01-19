@@ -6,7 +6,7 @@ import { FaCheckCircle, FaQuoteLeft, FaStar } from 'react-icons/fa';
 import Heading from '../../Components/Shared/Heading/Heading';
 
 const Reviews = () => {
-  const {bookingId} = useParams();
+  const {serviceId} = useParams();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [rating, setRating] = useState(0);
@@ -22,7 +22,7 @@ const Reviews = () => {
     try {
       setLoading(true);
       await axiosSecure.post('/reviews', {
-        bookingId,
+        serviceId,
         rating,
         message
       });
