@@ -79,7 +79,7 @@ const Navbar = () => {
                 >
                   <div className=" pb-3 border-b border-b-base-200 space-y-2">
                     <li className="text-sm font-bold text-primary text-center">
-                      {user.displayName}
+                      {user?.displayName}
                     </li>
                     <li className="text-xs text-neutral text-center">
                       {user.email}
