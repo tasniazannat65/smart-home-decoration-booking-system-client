@@ -20,58 +20,115 @@ const PaymentHistory = () => {
     refetchOnWindowFocus: false,
     keepPreviousData: false,
   });
+    const getStatusColor = (status) => {
+    return status === "paid"
+      ? "bg-green-100 text-green-700 border-green-200"
+      : "bg-red-100 text-red-700 border-red-200";
+  };
   return (
-    <div className="bg-base-100 rounded-4xl p-6">
-      <title>Laxius Decor || Payment History</title>
-      <Heading title="Payment History" center />
+     <div className="min-h-screen space-y-6">
+         <title>Laxius Decor || Payment History</title>
 
-      <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">
-        <table className="table">
-          {/* head */}
-          <thead
-            className="bg-base-200 
-    "
-          >
-            <tr>
-              <th className="text-primary font-bold text-lg">SL.</th>
-              <th className="text-primary font-bold text-lg">Service</th>
-              <th className="text-primary font-bold text-lg">Amount</th>
-              <th className="text-primary font-bold text-lg">Payment Date</th>
-              <th className="text-primary font-bold text-lg">Status</th>
-              <th className="text-primary font-bold text-lg">Transaction ID</th>
-              <th className="text-primary font-bold text-lg">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payments.map((payment, index) => (
-              <tr key={payment._id}>
-                <th className="p-2">{index + 1}</th>
-                <td className="p-2">{payment.serviceName}</td>
-                <td className="p-2">${payment.price}</td>
-                <td className="p-2">
-                  {new Date(payment.paidAt).toLocaleDateString()}
-                </td>
-                <td
-                  className={
-                    payment.paymentStatus === "paid"
-                      ? "text-primary font-bold p-2"
-                      : "text-red-600 font-bold p-2"
-                  }
-                >
-                  {payment.paymentStatus}
-                </td>
-                <td>{payment.transactionId}</td>
-                <td className="p-2">
-                  <button className=" btn bg-secondary text-white hover:bg-primary font-semibold flex items-center text-sm">
-                    <HiOutlineMagnifyingGlass size={15} />
-                    View{" "}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Header Section */}
+      <div className=" mb-8">
+        <Heading title={'Payment History'} subtitle=" Track all your payment transactions and receipts" center/>
+        
       </div>
+
+      {/* Table Section */}
+      <div className="bg-base-100 rounded-xl shadow-lg overflow-hidden border border-base-100">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b-2 border-primary/20">
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  SL.
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Service
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Amount
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Payment Date
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Transaction ID
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-base-100">
+              {payments.map((payment, index) => (
+                <tr
+                  key={payment._id}
+                  className="hover:bg-base-50 transition-colors duration-200"
+                >
+                  <td className="px-6 py-4 text-sm text-accent font-medium">
+                    {index + 1}
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm font-semibold text-accent">
+                      {payment.serviceName}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm font-bold text-accent">
+                      ${payment.price}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm text-neutral">
+                      {new Date(payment.paidAt).toLocaleDateString()}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border capitalize ${getStatusColor(
+                        payment.paymentStatus
+                      )}`}
+                    >
+                      {payment.paymentStatus}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm font-mono text-neutral bg-base-100 px-2 py-1 rounded">
+                      {payment.transactionId}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-secondary hover:bg-primary text-white font-semibold text-sm rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+                      <HiOutlineMagnifyingGlass size={16} />
+                      View
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Empty State */}
+        {payments.length === 0 && (
+          <div className="text-center py-16">
+            <div className="text-neutral text-6xl mb-4">💳</div>
+            <h3 className="text-lg font-semibold text-accent mb-2">
+              No payment history
+            </h3>
+            <p className="text-neutral text-sm">
+              Your payment transactions will appear here
+            </p>
+          </div>
+        )}
+      </div>
+
+     
     </div>
   );
 };
