@@ -83,6 +83,9 @@ The system solves common issues faced by local decorators:
 
      https://laxius-decor.web.app/
 
+## 🖥️Website Preview (Home Page)
+
+![Laxius Decor Home Page](./assets/screenshots/homepage.png)
 
 
 ## 🛠️Installation 
