@@ -2,7 +2,6 @@ import React from "react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../../Components/Shared/Loading/Loading";
-import Heading from "../../../../Components/Shared/Heading/Heading";
 import { Briefcase, Calendar, CheckCircle, Clock, MapPin, TrendingUp, User } from "lucide-react";
 
 const TodaySchedule = () => {
@@ -34,14 +33,15 @@ const TodaySchedule = () => {
       
       {/* Header Section */}
       <div className=" mb-8">
-        <div className="bg-gradient-to-r from-primary/60 to-secondary/80 rounded-xl p-8 shadow-xl">
+        <div className="bg-gradient-to-r from-primary to-secondary rounded-xl p-8 shadow-xl">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-4">
               <div className="bg-white/20 backdrop-blur-sm p-4 rounded-xl">
                 <Calendar className="w-8 h-8 text-white" />
               </div>
               <div>
-                  <Heading title="Today's Schedule" center />
+
+                  
 
                 <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Today's Schedule</h1>
                 <p className="text-blue-100 text-lg">
