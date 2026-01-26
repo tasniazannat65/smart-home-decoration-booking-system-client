@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import EditUserModal from "../../../../Components/Modal/EditUserModal";
+import { FaBan, FaCheckCircle, FaEdit, FaSearch, FaTrashAlt, FaUserShield } from "react-icons/fa";
 
 const ManageDecorators = () => {
   const axiosSecure = useAxiosSecure();
@@ -93,96 +94,225 @@ const ManageDecorators = () => {
       }
     });
   };
+   const getRoleBadge = (role) => {
+    const badges = {
+      admin: "bg-purple-100 text-purple-700 border-purple-200",
+      decorator: "bg-blue-100 text-blue-700 border-blue-200",
+      user: "bg-gray-100 text-gray-700 border-gray-200",
+    };
+    return badges[role] || badges.user;
+  };
+
+  const getStatusBadge = (status) => {
+    const badges = {
+      approved: "bg-green-100 text-green-700 border-green-200",
+      pending: "bg-yellow-100 text-yellow-700 border-yellow-200",
+      disabled: "bg-red-100 text-red-700 border-red-200",
+    };
+    return badges[status] || "bg-gray-100 text-gray-500 border-gray-200";
+  };
   if (isLoading) {
     return <Loading />;
   }
+
   return (
-    <div>
-      <title>Laxius Decor || Manage Decorators</title>
-      <Heading title="Manage Decorators" center />
-      <div className="flex lg:justify-start justify-center">
-        <input
-          type="text"
-          placeholder="Search Services..."
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setPage(1);
-          }}
-          className="border px-2 py-1 rounded focus:ring-2 focus:ring-primary focus:outline-none transition duration-300 ease-in-out hover:shadow-md"
-        />
+    <div className="min-h-screen space-y-6">
+            <title>Laxius Decor || Manage Decorators</title> 
+
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+                  <Heading title="Manage Decorators" subtitle='Manage user roles, approve decorators, and control access' center />
+
+         
+        </div>
+
+        {/* Search Bar */}
+        <div className="relative w-full md:w-80">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <FaSearch className="text-neutral" />
+          </div>
+          <input
+            type="text"
+            placeholder="Search users..."
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
+            className="w-full pl-11 pr-4 py-3 border border-base-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all duration-200 shadow-sm hover:shadow-md"
+          />
+        </div>
       </div>
 
-      <div className="overflow-x-auto rounded-box border-2 border-primary  bg-base-100 mt-5">
-        <table className="table">
-          {/* head */}
-          <thead className="bg-base-200 ">
-            <tr>
-              <th className="text-primary font-bold text-lg">SL.</th>
-              <th className="text-primary font-bold text-lg">Image</th>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="bg-base-100 rounded-xl shadow-md p-5 border border-base-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-neutral font-medium">Total Users</p>
+              <p className="text-2xl font-bold text-accent mt-1">{users.length}</p>
+            </div>
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <span className="text-2xl">👥</span>
+            </div>
+          </div>
+        </div>
+        <div className="bg-base-100 rounded-xl shadow-md p-5 border border-base-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-neutral font-medium">Decorators</p>
+              <p className="text-2xl font-bold text-accent mt-1">
+                {users.filter(u => u.role === "decorator").length}
+              </p>
+            </div>
+            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+              <span className="text-2xl">🎨</span>
+            </div>
+          </div>
+        </div>
+        <div className="bg-base-100 rounded-xl shadow-md p-5 border border-base-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-neutral font-medium">Pending</p>
+              <p className="text-2xl font-bold text-accent mt-1">
+                {users.filter(u => u.status === "pending").length}
+              </p>
+            </div>
+            <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+              <span className="text-2xl">⏳</span>
+            </div>
+          </div>
+        </div>
+        <div className="bg-base-100 rounded-xl shadow-md p-5 border border-base-100">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-neutral font-medium">Approved</p>
+              <p className="text-2xl font-bold text-accent mt-1">
+                {users.filter(u => u.status === "approved").length}
+              </p>
+            </div>
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+              <span className="text-2xl">✅</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-              <th className="text-primary font-bold text-lg">Name</th>
-              <th className="text-primary font-bold text-lg">Email</th>
-              <th className="text-primary font-bold text-lg">Role</th>
-              <th className="text-primary font-bold text-lg">Status</th>
-              <th className="text-primary font-bold text-lg">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user._id}>
-                <td className="p-2">{index + 1}</td>
-
-                <td className="p-2">
-                  <div className="mask mask-squircle h-12 w-12">
-                    <img
-                      src={user?.photoURL}
-                      alt="Avatar Tailwind CSS Component"
-                    />
-                  </div>
-                </td>
-                <td className="p-2 ">{user.displayName}</td>
-                <td className="p-2 ">{user.email}</td>
-                <td className="p-2 ">{user.role}</td>
-                <td className="p-2">{user.status || "null"}</td>
-                <td className="flex items-center gap-2 flex-col md:flex-row lg:flex-row">
-                  {user.role === "user" && (
-                    <button
-                      onClick={() => handleMakeDecorator(user._id)}
-                      className="px-3 py-1 bg-primary hover:bg-secondary text-white rounded-md"
+      {/* Table Section */}
+      <div className="bg-base-100 rounded-xl shadow-lg overflow-hidden border border-base-100">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b-2 border-primary/20">
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  SL.
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Image
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Name
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Email
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Role
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-primary uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-base-100">
+              {users.map((user, index) => (
+                <tr
+                  key={user._id}
+                  className="hover:bg-gray-50 transition-colors duration-200"
+                >
+                  <td className="px-6 py-4 text-sm text-accent font-medium">
+                    {index + 1}
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="relative">
+                      <img
+                        src={user?.photoURL}
+                        alt={user?.displayName}
+                        className="h-12 w-12 rounded-full object-cover border-2 border-base-200 shadow-sm"
+                      />
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-base-100 rounded-full"></div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm font-semibold text-neutral">
+                      {user.displayName}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="text-sm text-neutral">{user.email}</span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border capitalize ${getRoleBadge(
+                        user.role
+                      )}`}
                     >
-                      Make Decorator
-                    </button>
-                  )}
-                  {user.role === "decorator" && user.status === "pending" && (
-                    <button
-                      onClick={() => handleApprove(user._id)}
-                      className="px-3 py-1
-                             bg-green-700 hover:bg-green-600 text-white rounded-md"
+                      {user.role}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border capitalize ${getStatusBadge(
+                        user.status
+                      )}`}
                     >
-                      Approve
-                    </button>
-                  )}
-                  {user.role === "decorator" && user.status === "approved" && (
-                    <button
-                      onClick={() => handleDisable(user._id)}
-                      className="px-3 py-1
-                             bg-amber-500 hover:bg-amber-400 text-white rounded-md"
-                    >
-                      Disable
-                    </button>
-                  )}
-
-                  <button
-                    onClick={() => {
-                      setEditUser(user);
-                      setIsOpen(true);
-                    }}
-                    className="px-3 py-1 bg-yellow-500 hover:bg-yellow-400 text-white rounded-md"
-                  >
-                    Edit
-                  </button>
-                  {isOpen && editUser && (
+                      {user.status || "N/A"}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {user.role === "user" && (
+                        <button
+                          onClick={() => handleMakeDecorator(user._id)}
+                          className="flex items-center gap-1.5 px-3 py-2 bg-primary hover:bg-secondary text-white text-xs font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+                        >
+                          <FaUserShield />
+                          Make Decorator
+                        </button>
+                      )}
+                      {user.role === "decorator" && user.status === "pending" && (
+                        <button
+                          onClick={() => handleApprove(user._id)}
+                          className="flex items-center gap-1.5 px-3 py-2 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+                        >
+                          <FaCheckCircle />
+                          Approve
+                        </button>
+                      )}
+                      {user.role === "decorator" && user.status === "approved" && (
+                        <button
+                          onClick={() => handleDisable(user._id)}
+                          className="flex items-center gap-1.5 px-3 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+                        >
+                          <FaBan />
+                          Disable
+                        </button>
+                      )}
+                      <button
+                        onClick={() => {
+                          setEditUser(user);
+                          setIsOpen(true);
+                        }}
+                        className="flex items-center gap-1.5 px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+                      >
+                        <FaEdit />
+                        Edit
+                      </button>
+                       {isOpen && editUser && (
                     <EditUserModal
                       isOpen={isOpen}
                       setIsOpen={setIsOpen}
@@ -190,40 +320,63 @@ const ManageDecorators = () => {
                       onSubmit={handleEdit}
                     />
                   )}
+                      <button
+                        onClick={() => handleDelete(user._id)}
+                        className="flex items-center gap-1.5 px-3 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"
+                      >
+                        <FaTrashAlt />
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-                  <button
-                    onClick={() => handleDelete(user._id)}
-                    className="px-3 py-1 bg-red-600 hover:bg-red-500 text-white rounded-md"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {/* Empty State */}
+        {users.length === 0 && (
+          <div className="text-center py-16">
+            <div className="text-neutral text-6xl mb-4">👤</div>
+            <h3 className="text-lg font-semibold text-accent mb-2">
+              No users found
+            </h3>
+            <p className="text-neutral text-sm">
+              Try adjusting your search criteria
+            </p>
+          </div>
+        )}
       </div>
-      <div className="flex gap-2 justify-center mt-4">
+
+      {/* Pagination */}
+      <div className="flex gap-2 justify-center items-center bg-base-100 rounded-xl shadow-md p-4 border border-base-100">
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
-          className="btn btn-sm bg-primary/20"
+          className="px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Prev
         </button>
-        {[...Array(totalPages).keys()].map((num) => (
-          <button
-            key={num}
-            onClick={() => setPage(num + 1)}
-            className={`btn btn=sm ${page === num + 1 ? "btn-primary" : ""}`}
-          >
-            {num + 1}
-          </button>
-        ))}
+        <div className="flex gap-1">
+          {[...Array(totalPages).keys()].map((num) => (
+            <button
+              key={num}
+              onClick={() => setPage(num + 1)}
+              className={`px-4 py-2 font-semibold rounded-lg transition-all duration-200 ${
+                page === num + 1
+                  ? "bg-primary text-white shadow-md"
+                  : "bg-gray-100 text-neutral hover:bg-gray-200"
+              }`}
+            >
+              {num + 1}
+            </button>
+          ))}
+        </div>
         <button
           disabled={page === totalPages}
           onClick={() => setPage(page + 1)}
-          className="btn btn-sm bg-primary/20"
+          className="px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Next
         </button>
