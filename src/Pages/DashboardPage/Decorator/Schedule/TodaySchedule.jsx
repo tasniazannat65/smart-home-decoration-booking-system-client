@@ -68,107 +68,132 @@ const TodaySchedule = () => {
             <p className="text-neutral text-lg">No jobs schedule for today</p>
           </div>
         ) : (
-          <div className="bg-base-100 rounded-xl shadow-xl border border-base-100 overflow-hidden">
-            {/* Table Header */}
-            <div className="bg-gradient-to-r from-gray-50 to-blue-50/50 px-6 py-4 border-b border-base-200">
-              <div className="grid grid-cols-6 gap-4 font-bold text-accent text-sm uppercase tracking-wide">
-                <div className="flex items-center gap-2">
-                  <span className="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-xs font-bold">#</span>
-                  <span>SL.</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-blue-600" />
-                  <span>User</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-blue-600" />
-                  <span>Services</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-blue-600" />
-                  <span>Location</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-blue-600" />
-                  <span>Time</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
-                  <span>Status</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Table Body */}
-            <div className="divide-y divide-base-100">
-              {todayJobs.map((job, index) => {
-                const statusConfig = getStatusConfig(job.status);
-                const StatusIcon = statusConfig.icon;
-                
-                return (
-                  <div 
-                    key={job._id} 
-                    className="grid grid-cols-6 gap-4 px-6 py-5 hover:bg-blue-50/50 transition-colors duration-200 items-center group"
-                  >
-                    {/* Serial Number */}
-                    <div className="flex items-center gap-3">
-                      <span className="w-10 h-10 bg-gradient-to-br from-primary to-secondary text-white rounded-xl flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform duration-200">
-                        {index + 1}
-                      </span>
-                    </div>
-
-                    {/* User Email */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <User className="w-5 h-5 text-blue-600" />
+         <div className="bg-base-100 rounded-xl shadow-xl border border-base-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                {/* Table Header */}
+                <thead>
+                  <tr className="bg-primary/20 border-b border-base-200">
+                    <th className="px-6 py-4">
+                      <div className="flex items-center gap-2 font-bold text-accent text-sm uppercase tracking-wide">
+                        <span className="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center text-xs font-bold">#</span>
+                        <span>SL.</span>
                       </div>
-                      <span className="text-accent font-medium truncate">{job.userEmail}</span>
-                    </div>
-
-                    {/* Service Name */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Briefcase className="w-5 h-5 text-purple-600" />
+                    </th>
+                    <th className="px-6 py-4">
+                      <div className="flex items-center gap-2 font-bold text-accent text-sm uppercase tracking-wide">
+                        <User className="w-4 h-4 text-primary" />
+                        <span>User</span>
                       </div>
-                      <span className="text-gray-700 font-medium">{job.serviceName || "No Services"}</span>
-                    </div>
-
-                    {/* Location */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <MapPin className="w-5 h-5 text-green-600" />
+                    </th>
+                    <th className="px-6 py-4">
+                      <div className="flex items-center gap-2 font-bold text-accent text-sm uppercase tracking-wide">
+                        <Briefcase className="w-4 h-4 text-primary" />
+                        <span>Services</span>
                       </div>
-                      <span className="text-accent font-medium truncate">{job.location}</span>
-                    </div>
-
-                    {/* Time */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Clock className="w-5 h-5 text-orange-600" />
+                    </th>
+                    <th className="px-6 py-4">
+                      <div className="flex items-center gap-2 font-bold text-accent text-sm uppercase tracking-wide">
+                        <MapPin className="w-4 h-4 text-primary" />
+                        <span>Location</span>
                       </div>
-                      <span className="text-accent font-medium">
-                        {job.bookingDate
-                          ? new Date(job.bookingDate).toLocaleTimeString("en-BD", {
-                              timeZone: "Asia/Dhaka",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
-                          : "N/A"}
-                      </span>
-                    </div>
-
-                    {/* Status */}
-                    <div>
-                      <div className={`inline-flex items-center gap-2 ${statusConfig.bg} text-white px-4 py-2 rounded-xl font-semibold shadow-md hover:shadow-lg transition-shadow duration-200`}>
-                        <StatusIcon className="w-4 h-4" />
-                        <span className="text-sm">{statusConfig.text}</span>
+                    </th>
+                    <th className="px-6 py-4">
+                      <div className="flex items-center gap-2 font-bold text-accent text-sm uppercase tracking-wide">
+                        <Clock className="w-4 h-4 text-primary" />
+                        <span>Time</span>
                       </div>
-                    </div>
-                  </div>
-                );
-              })}
+                    </th>
+                    <th className="px-6 py-4">
+                      <div className="flex items-center gap-2 font-bold text-accent text-sm uppercase tracking-wide">
+                        <CheckCircle className="w-4 h-4 text-primary" />
+                        <span>Status</span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+
+                {/* Table Body */}
+                <tbody>
+                  {todayJobs.map((job, index) => {
+                    const statusConfig = getStatusConfig(job.status);
+                    const StatusIcon = statusConfig.icon;
+                    
+                    return (
+                      <tr 
+                        key={job._id} 
+                        className="hover:bg-blue-50/50 transition-colors duration-200 border-b border-base-100 group"
+                      >
+                        {/* Serial Number */}
+                        <td className="px-6 py-5">
+                          <span className="w-10 h-10 bg-gradient-to-br from-primary to-secondary text-white rounded-xl flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform duration-200">
+                            {index + 1}
+                          </span>
+                        </td>
+
+                        {/* User Email */}
+                        <td className="px-6 py-5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <User className="w-5 h-5 text-blue-600" />
+                            </div>
+                            <span className="text-accent font-medium truncate">{job.userEmail}</span>
+                          </div>
+                        </td>
+
+                        {/* Service Name */}
+                        <td className="px-6 py-5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Briefcase className="w-5 h-5 text-purple-600" />
+                            </div>
+                            <span className="text-accent font-medium">{job.serviceName || "No Services"}</span>
+                          </div>
+                        </td>
+
+                        {/* Location */}
+                        <td className="px-6 py-5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <MapPin className="w-5 h-5 text-green-600" />
+                            </div>
+                            <span className="text-accent font-medium truncate">{job.location}</span>
+                          </div>
+                        </td>
+
+                        {/* Time */}
+                        <td className="px-6 py-5">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Clock className="w-5 h-5 text-orange-600" />
+                            </div>
+                            <span className="text-accent font-medium">
+                              {job.bookingDate
+                                ? new Date(job.bookingDate).toLocaleTimeString("en-BD", {
+                                    timeZone: "Asia/Dhaka",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  })
+                                : "N/A"}
+                            </span>
+                          </div>
+                        </td>
+
+                        {/* Status */}
+                        <td className="px-6 py-5">
+                          <div className={`inline-flex items-center gap-2 ${statusConfig.bg} text-white px-4 py-2 rounded-xl font-semibold shadow-md hover:shadow-lg transition-shadow duration-200`}>
+                            <StatusIcon className="w-4 h-4" />
+                            <span className="text-sm">{statusConfig.text}</span>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </div>
+
         )}
 
         {/* Summary Cards */}
@@ -195,7 +220,7 @@ const TodaySchedule = () => {
                   {todayJobs.filter(j => j.status === 'on_the_way').length}
                 </span>
               </div>
-              <p className="text-gray-600 font-medium">On The Way</p>
+              <p className="text-neutral font-medium">On The Way</p>
             </div>
 
             <div className="bg-base-100 rounded-xl p-6 shadow-lg border border-base-100 hover:shadow-xl transition-shadow duration-300">
