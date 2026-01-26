@@ -4,10 +4,12 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import useAuth from '../../Hooks/useAuth';
 
 const UpdateProfileModal = ({isOpen, closeModal, user, refetch}) => {
 
     const axiosSecure = useAxiosSecure();
+    const {updateUserProfile} = useAuth();
     const {register, handleSubmit, reset} = useForm({
         defaultValues: {
             name: user?.displayName || '',
@@ -39,6 +41,10 @@ const UpdateProfileModal = ({isOpen, closeModal, user, refetch}) => {
                 displayName: data.name,
                 photoURL,
             });
+            await updateUserProfile({
+              displayName: data.name,
+              photoURL
+            })
             toast.success('Profile updated successfully');
             closeModal();
             refetch();

@@ -26,9 +26,17 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signOut(auth);
     }
-    const updateUserProfile = (profile)=>{
-        return updateProfile(auth.currentUser, profile)
-    }
+  const updateUserProfile = async (profile) => {
+  if (!auth.currentUser) return;
+
+  await updateProfile(auth.currentUser, profile);
+
+  setUser({
+    ...auth.currentUser,
+    ...profile
+  });
+};
+
 
    
 
