@@ -230,7 +230,7 @@ const MyBooking = () => {
                   </td>
                   <td className="px-6 py-4">
                     {booking.status === "completed" && !booking.reviewed ? (
-                      <Link to={'/dashboard/review/:bookingId'} className="btn  border-2 border-primary text-primary bg-base-100 hover:bg-primary hover:text-white text-xs font-semibold rounded-lg transition-all duration-200">
+                      <Link to={`/dashboard/review/${booking._id}`} className="btn  border-2 border-primary text-primary bg-base-100 hover:bg-primary hover:text-white text-xs font-semibold rounded-lg transition-all duration-200">
                         Give Review
                       </Link>
                     ) : booking.reviewed ? (
