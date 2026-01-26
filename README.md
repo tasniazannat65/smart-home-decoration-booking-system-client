@@ -85,7 +85,7 @@ The system solves common issues faced by local decorators:
 
 ## 🖥️Website Preview (Home Page)
 
-![Laxius Decor Home Page](./assets/screenshots/homepage.png)
+![Laxius Decor Home Page](./src/assets/screenshots/homepage.png)
 
 
 ## 🛠️Installation 
