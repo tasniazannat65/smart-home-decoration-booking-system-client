@@ -53,9 +53,9 @@ const DashboardLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <p className=" font-bold text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
+          <p className=" font-bold text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             {" "}
-            Dashboard
+          <span className="capitalize">{role}</span>  Dashboard
           </p>{" "}
         </nav>
         <div className=" min-h-screen bg-base-200">
