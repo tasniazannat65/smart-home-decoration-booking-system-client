@@ -67,13 +67,13 @@ const DashboardLayout = () => {
         {/* Page content here */}
       </div>
 
-      <div className="drawer-side is-drawer-close:overflow-visible">
+      <div className="drawer-side h-screen is-drawer-close:overflow-visible">
         <label
           htmlFor="my-drawer-4"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-300 is-drawer-close:w-28 is-drawer-open:w-64">
+        <div className="flex h-full flex-col bg-base-300 is-drawer-close:w-28 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             <li>
