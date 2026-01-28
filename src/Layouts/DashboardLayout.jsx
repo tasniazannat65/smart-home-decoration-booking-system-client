@@ -67,15 +67,15 @@ const DashboardLayout = () => {
         {/* Page content here */}
       </div>
 
-      <div className="drawer-side h-screen is-drawer-close:overflow-visible">
+      <div className="drawer-side is-drawer-close:overflow-visible">
         <label
           htmlFor="my-drawer-4"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex h-full flex-col bg-base-300 is-drawer-close:w-28 is-drawer-open:w-64">
+        <div className="flex min-h-screen flex-col bg-base-300 is-drawer-close:w-28 is-drawer-open:w-64">
           {/* Sidebar content here */}
-          <ul className="menu w-full grow">
+          <ul className="menu w-full flex-1">
             <li>
               <Link to="/">
                 <img src={logoImg} alt="Brand Logo" className="w-16 h-16" />
@@ -255,8 +255,9 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
           </ul>
-  <div className="w-full mt-auto border-t border-base-200">
-    <button
+  <ul className="menu w-full border-t border-base-200">
+  <li>
+      <button
     onClick={signOutUser}
     className="flex items-center gap-3 w-full px-3 py-2 rounded-md text-red-500 font-semibold hover:bg-red-600 hover:text-white transition-all duration-300 is-drawer-close:tooltip is-drawer-close:tooltip-right"
     data-tip="Logout"
@@ -265,8 +266,9 @@ const DashboardLayout = () => {
       <span className="is-drawer-close:hidden">Logout</span>
 
     </button>
+  </li>
 
-  </div>
+  </ul>
 
 
     
