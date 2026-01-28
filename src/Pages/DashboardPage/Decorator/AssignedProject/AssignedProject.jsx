@@ -67,7 +67,7 @@ const AssignedProject = () => {
   }
 
   return (
-  <div className="p-6 space-y-6">
+  <div className="py-8 md:py-10 lg:py-12 space-y-6">
             <title>Laxius Decor || Assign Project</title>
 
       {/* Header Section */}
