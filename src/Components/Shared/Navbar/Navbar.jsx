@@ -10,13 +10,11 @@ import { BsMoon, BsSun } from "react-icons/bs";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-  useEffect(()=>{
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  },[theme]);
-
-
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <div className="bg-base-200 fixed left-0 w-full z-50 border-b border-base-300">
@@ -24,14 +22,18 @@ const Navbar = () => {
         <div className="navbar">
           <div className="flex-1">
             <div className="flex items-center gap-1">
-              <img src={logoImg} alt="Brand Logo" className="w-16 h-16" />
+              <img
+                src={logoImg}
+                alt="Brand Logo"
+                className="w-12 h-12 md:w-16 md:h-16 "
+              />
               <div className="flex flex-col leading-tight">
                 <Link to="/">
-                  <p className=" font-bold text-[16px] sm:text-[17px] md:text-lg lg:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
+                  <p className=" font-bold text-[12px] md:text-lg lg:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
                     Laxius Decor
                   </p>
                 </Link>
-                <p className="text-sm text-neutral font-medium -mt-1">
+                <p className="text-[12px] md:text-sm text-neutral font-medium -mt-1">
                   Design Beyond Ordinary
                 </p>
               </div>
@@ -40,20 +42,16 @@ const Navbar = () => {
 
           <div className="flex items-center gap-1 lg:gap-2">
             <button
-            onClick={()=> setTheme(theme === 'light' ? 'dark' : 'light')}
-            className="bgn btn-ghost btn-circle"
-            aria-label="Toggle Theme"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="bgn btn-ghost btn-circle"
+              aria-label="Toggle Theme"
             >
-              {
-                theme === 'light' ? (
-                  <BsMoon className="text-xl text-neutral"/>
-                ) : (
-                  <BsSun className="text-xl text-warning"/>
-                )
-              }
-
+              {theme === "light" ? (
+                <BsMoon className="text-xl text-neutral" />
+              ) : (
+                <BsSun className="text-xl text-warning" />
+              )}
             </button>
-         
 
             {user ? (
               <div className=" dropdown dropdown-end  z-50">

@@ -14,7 +14,7 @@ const MainLayout = () => {
                     <Navbar/>
                 </nav>
             </header>
-            <main className='min-h-screen pt-20'>
+            <main className='min-h-screen pt-16 md:pt-20'>
                 {
                     navigation.state === 'loading' && (<Loading/>)
                 }
