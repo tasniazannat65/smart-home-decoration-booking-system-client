@@ -40,7 +40,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-1 lg:gap-2">
+          <div className="flex flex-wrap items-center gap-1 lg:gap-2">
             <button
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
               className="bgn btn-ghost btn-circle"
@@ -103,13 +103,13 @@ const Navbar = () => {
               </div>
             ) : (
               <Link to="/login">
-                <Button outline label="Login" />
+                <Button outline label="Login"/>
               </Link>
             )}
 
             <div className="flex items-center">
               <Link to="/sign-up">
-                <Button label="Sign Up" />
+                <Button label="Sign Up"  />
               </Link>
             </div>
           </div>
