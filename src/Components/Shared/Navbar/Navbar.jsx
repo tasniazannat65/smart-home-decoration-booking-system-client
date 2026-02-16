@@ -31,7 +31,7 @@ const Navbar = () => {
                   Laxius Decor
                 </p>
 
-                <p className="hidden md:inline  text-sm text-neutral font-medium -mt-1">
+                <p className="hidden min-[900px]:block  text-sm text-neutral font-medium -mt-1">
                   Design Beyond Ordinary
                 </p>
               </div>
