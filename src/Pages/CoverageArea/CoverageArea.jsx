@@ -40,7 +40,7 @@ const CoverageArea = () => {
         </div>
         <div className="my-8 flex flex-col justify-center items-center">
           <form onSubmit={handleSearch}>
-            <div className="relative w-[350px] md:w-[400px] lg:w-[480px] bg-gray-100 rounded-2xl shadow-md p-1 hover:shadow-lg">
+            <div className="relative w-[300px] md:w-[400px] lg:w-[480px] bg-gray-100 rounded-2xl shadow-md p-1 hover:shadow-lg">
               <div className="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none">
                 <svg
                   className="h-5 w-5 text-neutral opacity-70"

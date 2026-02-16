@@ -20,23 +20,23 @@ const Navbar = () => {
       <Container>
         <div className="navbar">
           <div className="flex-1">
-            <div className="flex items-center gap-1">
+            <Link to="/"  className="flex items-center gap-0 md:gap-1">
               <img
                 src={logoImg}
                 alt="Brand Logo"
-                className="w-10 h-10 md:w-16 md:h-16 "
+                className="w-12 h-12 md:w-16 md:h-16 "
               />
               <div className="flex flex-col leading-tight">
-                <Link to="/">
-                  <p className=" font-bold text-[10px] md:text-lg lg:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
+              
+                  <p className=" font-bold text-[11px] md:text-lg lg:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
                     Laxius Decor
                   </p>
-                </Link>
-                <p className="text-[10px] md:text-sm text-neutral font-medium -mt-1">
+                
+                <p className="hidden md:block  text-sm text-neutral font-medium -mt-1">
                   Design Beyond Ordinary
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className="flex flex-wrap items-center gap-1 lg:gap-2">
