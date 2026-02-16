@@ -16,11 +16,13 @@ const CoverageArea = () => {
 
     const location = formData.get("location").toLowerCase();
     const matchedService = servicesArea.find((service) =>
-      service.locations.some((loc) => loc.city.toLowerCase().includes(location))
+      service.locations.some((loc) =>
+        loc.city.toLowerCase().includes(location),
+      ),
     );
     if (!matchedService) return;
     const findLocation = matchedService.locations.find((loc) =>
-      loc.city.toLowerCase().includes(location)
+      loc.city.toLowerCase().includes(location),
     );
     if (findLocation && mapRef.current) {
       mapRef.current.flyTo([findLocation.lat, findLocation.lng], 14);
@@ -95,7 +97,7 @@ const CoverageArea = () => {
                   </Marker>
                 );
               }
-            })
+            }),
           )}
         </MapContainer>
       </div>
