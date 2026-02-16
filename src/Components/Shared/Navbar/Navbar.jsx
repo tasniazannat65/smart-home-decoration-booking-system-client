@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import MyLink from "./MyLink";
 import Container from "../Container/Container";
-import Button from "../Button/Button";
 import logoImg from "../../../assets/logo.png";
 import useAuth from "../../../Hooks/useAuth";
 import { BiLogOut } from "react-icons/bi";
@@ -25,15 +24,15 @@ const Navbar = () => {
               <img
                 src={logoImg}
                 alt="Brand Logo"
-                className="w-12 h-12 md:w-16 md:h-16 "
+                className="w-10 h-10 md:w-16 md:h-16 "
               />
               <div className="flex flex-col leading-tight">
                 <Link to="/">
-                  <p className=" font-bold text-[12px] md:text-lg lg:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
+                  <p className=" font-bold text-[10px] md:text-lg lg:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">
                     Laxius Decor
                   </p>
                 </Link>
-                <p className="text-[12px] md:text-sm text-neutral font-medium -mt-1">
+                <p className="text-[10px] md:text-sm text-neutral font-medium -mt-1">
                   Design Beyond Ordinary
                 </p>
               </div>
@@ -103,13 +102,17 @@ const Navbar = () => {
               </div>
             ) : (
               <Link to="/login">
-                <Button outline label="Login"/>
+                <button className="border-2  border-secondary text-secondary hover:bg-secondary hover:text-white px-2 py-1 md:px-4 md:py-2  rounded-lg font-semibold">
+                  Login
+                </button>
               </Link>
             )}
 
             <div className="flex items-center">
               <Link to="/sign-up">
-                <Button label="Sign Up"  />
+               <button className=" bg-primary hover:bg-secondary text-white px-2 py-1 md:px-4 md:py-2.5  rounded-lg font-semibold">
+                  Sign Up
+                </button>
               </Link>
             </div>
           </div>
