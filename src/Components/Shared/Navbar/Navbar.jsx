@@ -109,7 +109,7 @@ const Navbar = () => {
 
             <div className="flex items-center">
               <Link to="/sign-up">
-                <button className=" bg-primary hover:bg-secondary text-white px-2 py-1 md:px-4 md:py-2.5  rounded-lg font-semibold">
+                <button className=" bg-primary border-2 border-primary hover:bg-secondary text-white px-2 py-1 md:px-4 md:py-2.5  rounded-lg font-semibold">
                   Sign Up
                 </button>
               </Link>
